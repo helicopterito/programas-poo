@@ -6,7 +6,7 @@
 
 /**
  *
- * @author uchitel
+ * @author Alvarado Moreno Nestor
  */
 public class Estudiante extends Persona{
     
@@ -24,16 +24,29 @@ public class Estudiante extends Persona{
         this.vinoAClase = true;
     }
     
-    public Estudiante(String numeroDeCuenta, int semestresCursados, int calificacion)
+    public Estudiante(String numeroDeCuenta, int semestresCursados, int calificacion, boolean vinoAClase)
     {
         super();
-        this.numeroDeCuenta = "";
-        this.semestresCursados = 0;
-        this.calificacion = 7;
+        this.numeroDeCuenta = numeroDeCuenta;
+        this.semestresCursados = semestresCursados;
+        this.calificacion = calificacion;
+        this.vinoAClase = vinoAClase;
         
     }
     
-    public void reprobar(String materia, int calificacion)
+    public Estudiante(String nombre, String apaterno, String amaterno, String colorDeOjos,
+            String fechaNacimiento, float peso, float altura, int edad, char genero, String numeroDeCuenta,
+            int semestresCursados, int calificacion, boolean vinoAClase)
+    {
+        super(nombre, apaterno, amaterno, colorDeOjos, fechaNacimiento,
+                peso, altura, edad, genero);
+        this.numeroDeCuenta = numeroDeCuenta;
+        this.semestresCursados = semestresCursados;
+        this.calificacion = calificacion;
+        this.vinoAClase = vinoAClase;
+    }
+    
+    public void calificar(String materia, int calificacion)
     {
         if(calificacion < 6)
         {
@@ -59,6 +72,7 @@ public class Estudiante extends Persona{
         {
             return false;
         }
+       
         
     }
     

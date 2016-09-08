@@ -6,7 +6,7 @@
 
 /**
  *
- * @author uchitel
+ * @author Alvarado Moreno Nestor
  */
 public class Profesor extends Persona{
     
@@ -25,7 +25,7 @@ public class Profesor extends Persona{
     
     public void reprobarEstudiante(Estudiante estudiante)
     {
-        if(estudiante.getCalificacion() < 6)
+        if(estudiante.reprobar())
         {
             System.out.println("Acabo de reprobar a " + estudiante.getNombre() + " " + estudiante.getaPaterno());
             System.out.println(" en la materia de " + this.materia);
@@ -53,7 +53,9 @@ public class Profesor extends Persona{
             }
         }
         
-        /*for (Estudiante est : estudiantes) {
+        /*
+        VERSIÓN OPTIMIZADA
+        for (Estudiante est : estudiantes) {
             if(est.isVinoAClase())
             {
                 System.out.println(est.getNombre() + " " + est.getaPaterno() + " vino a clase");

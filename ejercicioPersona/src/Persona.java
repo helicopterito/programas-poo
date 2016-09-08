@@ -65,7 +65,7 @@ public class Persona {
         System.out.println("Que fecha es?");
         fecha = lector.nextLine();
         System.out.println("Fue Hombre o Mujer? ");
-        gen =lector.next().charAt(0);
+        gen = lector.next().charAt(0);
         
         
         if(this.genero == 'H')
@@ -73,7 +73,7 @@ public class Persona {
             return bebe = new Persona(name, this.getaPaterno(), persona.getaPaterno(), persona.getColorDeOjos(),
             fecha, (float)4.3, (float)0.5, 0, gen);
         }
-        else
+        else 
         {
             return bebe = new Persona(name, persona.getaPaterno(), this.getaPaterno(), persona.getColorDeOjos(),
             fecha, (float)4.3, (float)0.5, 0, gen);

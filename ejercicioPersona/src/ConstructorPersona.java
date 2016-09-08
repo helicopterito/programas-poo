@@ -44,9 +44,11 @@ public class ConstructorPersona {
         Persona superlatosa = new Persona("Fernanda", "Aguilera", "Mc", "Cafe", "Hace 18 años", (float) 60.0, (float)1.6,
         20, 'M');
         
-        Persona bebe1 = nestor.reproducirse(superlatosa);
+        //Persona bebe1 = nestor.reproducirse(superlatosa);
+        Persona bebe2 = superlatosa.reproducirse(nestor);
         
-        System.out.println(bebe1.getNombre() + "\n" + bebe1.getaPaterno() + "\n" + bebe1.getaMaterno());
+       // System.out.println(bebe1.getNombre() + "\n" + bebe1.getaPaterno() + "\n" + bebe1.getaMaterno());
+        System.out.println(bebe2.getNombre() + " " + bebe2.getaPaterno() + " " + bebe2.getaMaterno());
     }
     
 }
