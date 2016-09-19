@@ -24,4 +24,46 @@ public class Refrigerador {
         this.tamanio = tamanio;
         this.secciones = secciones;
     }
+    
+    // Lo hace el refri o la seccion?
+    
+    public void enfriar()
+    {
+        
+    }
+    
+    // A que se refiere con esto?
+    
+    public void conservar()
+    {
+        
+    }
+    
+    // A que se refiere con esto?
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public float getTamanio() {
+        return tamanio;
+    }
+
+    public void setTamanio(float tamanio) {
+        this.tamanio = tamanio;
+    }
+
+    public Seccion[] getSecciones() {
+        return secciones;
+    }
+
+    public void setSecciones(Seccion[] secciones) {
+        this.secciones = secciones;
+    }
+    
+    
 }
