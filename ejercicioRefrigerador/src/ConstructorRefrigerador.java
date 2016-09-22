@@ -54,7 +54,7 @@ public class ConstructorRefrigerador {
         refri.secciones[0].almacenarProducto(p1);
         
         System.out.println(fecha.compareTo(fechaa));
-        
+        refri.secciones[0].pedirProductos();
         
         
     }
