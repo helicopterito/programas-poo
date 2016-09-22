@@ -22,7 +22,29 @@ public class ProductoCarne extends Producto{
         this.fechaCaducidad = fechaCaducidad;
         this.fechaRecomendaDeConsumo = fechaRecomendaDeConsumo;
     }
+    
+    public ProductoCarne(Date fechaDeCaducidad)
+    {
+        super();
+        this.fechaCaducidad = fechaDeCaducidad;
+    }
 
+    
+    public void calcularFechaCaducidad()
+    {
+        
+        Date fechaHoy = new Date();
+        if(this.fechaCaducidad.compareTo(fechaHoy) < 0)
+        {
+            System.out.println("El producto ya caduco. Es necesario sacarlo del refrigerador");
+        }
+        else
+        {
+            System.out.println("Quedan " + (int)(fechaCaducidad.getTime() - fechaHoy.getTime()) / (1000*60*60*24)
+                    + " dias para que caduque");
+        }
+    }
+    
     public Date getFechaCaducidad() {
         return fechaCaducidad;
     }
