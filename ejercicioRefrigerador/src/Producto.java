@@ -54,6 +54,15 @@ public class Producto {
             System.out.println("Todavia hay producto");
         }
     }
+    
+    public boolean avisoReemplazo()
+    {
+        if(this.contenidoActual == 0)
+        {
+            return true;
+        }
+        return false;
+    }
 
     public String getNombre() {
         return nombre;
