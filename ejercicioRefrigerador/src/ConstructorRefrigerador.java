@@ -18,7 +18,8 @@ public class ConstructorRefrigerador {
     
     public static void main(String[] args) {
         
-        Date fecha = new Date();
+        Date fecha = new Date(2016, 9, 22);
+        Date fechaa = new Date(2015, 11,12, 20, 30, 0);
         System.out.println(fecha.toString());
         
         String str = String.format("Fecha y Hora actual : %tc", fecha);
@@ -29,8 +30,11 @@ public class ConstructorRefrigerador {
         System.out.println("Fecha2: " + fecha2);
         
         
-        LocalTime fecha3 = LocalTime.of(20, 26);
+        
+        LocalDate fecha3 = LocalDate.of(2015, Month.DECEMBER,22);
         System.out.println("fecha3: " + fecha3);
+        
+        System.out.println(fecha2.compareTo(fecha3));
         
         
         
@@ -43,7 +47,13 @@ public class ConstructorRefrigerador {
         
         Producto p1 = new Producto("Pizza Congelada", fecha, "Plastico", "Bueno", 2, 200, 0.2f);
         
+        ProductoCarne pc1 = new ProductoCarne(fechaa);
+        
+        pc1.calcularFechaCaducidad();
+        
         refri.secciones[0].almacenarProducto(p1);
+        
+        System.out.println(fecha.compareTo(fechaa));
         
         
         
