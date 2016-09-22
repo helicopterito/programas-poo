@@ -18,6 +18,7 @@ public class Seccion {
     private float temperaturaMinima;
     private float temperaturaMaxima;
     private float capacidad;
+    private float capacidadEnUso;
     
     public Seccion()
     {
@@ -91,11 +92,34 @@ public class Seccion {
     
     
     //que se refiere?
-    public void almacenar(Producto producto)
+    public void almacenarProducto(Producto producto)
     {
-        System.out.println("El producto + " + producto.getNombre() + " esta almacenado");
+        if(this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad()))
+        {
+            this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
+        }
+        else
+        {
+            System.out.println("Sin espacio disponible");
+        }
     }
     
+    private float getCapacidadDisponible()
+    {
+        return this.capacidad - this.capacidadEnUso;
+    }
+    
+    public void sacarProducto(Producto producto)
+    {
+        if(this.capacidadEnUso - (producto.getVolumenUnitario() * producto.getCantidad()) < 0)
+        {
+            System.out.println("No se pueden sacar mas productos");
+        }
+        else
+        {
+            this.capacidadEnUso -= (producto.getVolumenUnitario() * producto.getCantidad());
+        }
+    }
     
 
     public String getIdentificador() {
@@ -137,5 +161,15 @@ public class Seccion {
     public void setTemperaturaMaxima(float temperaturaMaxima) {
         this.temperaturaMaxima = temperaturaMaxima;
     }
+
+    public float getCapacidadEnUso() {
+        return capacidadEnUso;
+    }
+
+    public void setCapacidadEnUso(float capacidadEnUso) {
+        this.capacidadEnUso = capacidadEnUso;
+    }
+
+
     
 }

@@ -1,3 +1,6 @@
+
+import java.util.Date;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,29 +13,29 @@
  */
 public class ProductoCarne extends Producto{
     
-    private String fechaCaducidad; // si compre la carne con el carnicero?
-    private String fechaRecomendaDeConsumo;
+    private Date fechaCaducidad; // si compre la carne con el carnicero?
+    private Date fechaRecomendaDeConsumo;
     
-    public ProductoCarne(String fechaCaducidad, String fechaRecomendaDeConsumo)
+    public ProductoCarne(Date fechaCaducidad, Date fechaRecomendaDeConsumo)
     {
         super();
         this.fechaCaducidad = fechaCaducidad;
         this.fechaRecomendaDeConsumo = fechaRecomendaDeConsumo;
     }
 
-    public String getFechaCaducidad() {
+    public Date getFechaCaducidad() {
         return fechaCaducidad;
     }
 
-    public void setFechaCaducidad(String fechaCaducidad) {
+    public void setFechaCaducidad(Date fechaCaducidad) {
         this.fechaCaducidad = fechaCaducidad;
     }
 
-    public String getFechaRecomendaDeConsumo() {
+    public Date getFechaRecomendaDeConsumo() {
         return fechaRecomendaDeConsumo;
     }
 
-    public void setFechaRecomendaDeConsumo(String fechaRecomendaDeConsumo) {
+    public void setFechaRecomendaDeConsumo(Date fechaRecomendaDeConsumo) {
         this.fechaRecomendaDeConsumo = fechaRecomendaDeConsumo;
     }
     

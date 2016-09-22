@@ -1,3 +1,6 @@
+
+import java.util.Date;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,7 +13,7 @@
  */
 public class ProductoLacteo extends Producto{
     
-    private String fechaCaducidad;
+    private Date fechaCaducidad;
     private String tipoEmpaque; // <empaque> a que se refiere
     private String marca;   //no seria un atributo de producto?
     // cuales son sus metodos??
@@ -20,11 +23,11 @@ public class ProductoLacteo extends Producto{
         super();
     }
 
-    public String getFechaCaducidad() {
+    public Date getFechaCaducidad() {
         return fechaCaducidad;
     }
 
-    public void setFechaCaducidad(String fechaCaducidad) {
+    public void setFechaCaducidad(Date fechaCaducidad) {
         this.fechaCaducidad = fechaCaducidad;
     }
 

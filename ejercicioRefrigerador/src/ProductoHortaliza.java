@@ -1,3 +1,6 @@
+
+import java.util.Date;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,18 +13,18 @@
  */
 public class ProductoHortaliza extends Producto{
     
-    private String fechaRecomendacion; // a que se refiere? cu[ales son sus metodos?
+    private Date fechaRecomendacion; // a que se refiere? cu[ales son sus metodos?
     
     public ProductoHortaliza()
     {
         super();
     }
 
-    public String getFechaRecomendacion() {
+    public Date getFechaRecomendacion() {
         return fechaRecomendacion;
     }
 
-    public void setFechaRecomendacion(String fechaRecomendacion) {
+    public void setFechaRecomendacion(Date fechaRecomendacion) {
         this.fechaRecomendacion = fechaRecomendacion;
     }
     

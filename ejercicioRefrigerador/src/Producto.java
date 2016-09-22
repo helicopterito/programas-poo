@@ -1,3 +1,6 @@
+
+import java.util.Date;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,20 +13,22 @@
  */
 public class Producto {
     private String nombre;
-    private String fechaDeCompra;
+    private Date fechaDeCompra;
     private String empaque; // a que se refiere?
     private String estadoConservacion;
     private float cantidad; //?
+    private float volumenUnitario;
     private float peso;
     
-    public Producto(String nombre, String fechaDeCompra, String empaque, String estadoConservacion,
-            float cantidad, float peso)
+    public Producto(String nombre, Date fechaDeCompra, String empaque, String estadoConservacion,
+            float cantidad, float volumenUnitario, float peso)
     {
         this.nombre = nombre;
         this.fechaDeCompra = fechaDeCompra;
         this.empaque = empaque;
         this.estadoConservacion = estadoConservacion;
         this.cantidad = cantidad;
+        this.volumenUnitario = volumenUnitario;
         this.peso = peso;
     }
     
@@ -40,11 +45,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getFechaDeCompra() {
+    public Date getFechaDeCompra() {
         return fechaDeCompra;
     }
 
-    public void setFechaDeCompra(String fechaDeCompra) {
+    public void setFechaDeCompra(Date fechaDeCompra) {
         this.fechaDeCompra = fechaDeCompra;
     }
 
@@ -78,6 +83,14 @@ public class Producto {
 
     public void setPeso(float peso) {
         this.peso = peso;
+    }
+
+    public float getVolumenUnitario() {
+        return volumenUnitario;
+    }
+
+    public void setVolumenUnitario(float volumenUnitario) {
+        this.volumenUnitario = volumenUnitario;
     }
     
 }

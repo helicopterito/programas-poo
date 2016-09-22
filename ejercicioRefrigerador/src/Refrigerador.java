@@ -11,18 +11,23 @@
 public class Refrigerador {
     private String marca;
     private float tamanio;
-    private Seccion secciones[];
+    protected  Seccion[] secciones;
     
     public Refrigerador()
     {
         
     }
     
-    public Refrigerador(String marca, float tamanio, Seccion secciones[])
+    public Refrigerador(String marca, float tamanio, int numeroDeSecciones)
     {
         this.marca = marca;
         this.tamanio = tamanio;
-        this.secciones = secciones;
+        this.secciones = new Seccion[numeroDeSecciones];
+        
+        /*for(int i = 0; i < numeroDeSecciones; i++)
+        {
+            secciones[i] = new Seccion();
+        }*/
     }
     
     // Lo hace el refri o la seccion?
@@ -57,12 +62,12 @@ public class Refrigerador {
         this.tamanio = tamanio;
     }
 
-    public Seccion[] getSecciones() {
-        return secciones;
+    public Seccion getSeccion(int i) {
+        return secciones[i];
     }
 
-    public void setSecciones(Seccion[] secciones) {
-        this.secciones = secciones;
+    public void setSeccion(Seccion seccion, int i) {
+        this.secciones[i] = seccion;
     }
     
     
