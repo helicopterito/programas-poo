@@ -121,6 +121,19 @@ public class Seccion {
         }
     }
     
+    public void pedirProductos()
+    {
+        if(this.capacidadEnUso == 0)
+        {
+            System.out.println("Necesito productos, estoy vacio");
+        }
+        else
+        {
+            System.out.println("No se necesitan productos");
+        }
+        
+    }
+    
 
     public String getIdentificador() {
         return identificador;
