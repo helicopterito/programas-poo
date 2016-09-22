@@ -19,6 +19,8 @@ public class Producto {
     private float cantidad; //?
     private float volumenUnitario;
     private float peso;
+    private float contenidoNeto;
+    private float contenidoActual;
     
     public Producto(String nombre, Date fechaDeCompra, String empaque, String estadoConservacion,
             float cantidad, float volumenUnitario, float peso)
@@ -35,6 +37,22 @@ public class Producto {
     public Producto()
     {
         
+    }
+    
+    public void notificarDeReemplazo()
+    {
+        if(this.contenidoActual == 0)
+        {
+            System.out.println("El producto esta vacio");
+        }
+        else if(this.contenidoActual <= (this.contenidoNeto / 10))
+        {
+            System.out.println("El producto esta a punto de acabarse");
+        }
+        else
+        {
+            System.out.println("Todavia hay producto");
+        }
     }
 
     public String getNombre() {
@@ -91,6 +109,23 @@ public class Producto {
 
     public void setVolumenUnitario(float volumenUnitario) {
         this.volumenUnitario = volumenUnitario;
+    }
+    
+    public float getContenidoActual(){
+        return contenidoActual;
+    }
+    
+    public void setContenidoActual(float contenidoActual)
+    {
+        this.contenidoActual = contenidoActual;
+    }
+    
+    public float getContenidoNeto() {
+        return contenidoNeto;
+    }
+
+    public void setContenidoNeto(float contenidoNeto) {
+        this.contenidoNeto = contenidoNeto;
     }
     
 }
