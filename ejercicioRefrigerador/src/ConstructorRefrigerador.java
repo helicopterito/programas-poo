@@ -19,7 +19,7 @@ public class ConstructorRefrigerador {
     public static void main(String[] args) {
         
         Date fecha = new Date(2016, 9, 22);
-        Date fechaa = new Date(2015, 11,12, 20, 30, 0);
+Date fechaa = new Date(2015, 11,12, 20, 30, 0);
         System.out.println(fecha.toString());
         
         String str = String.format("Fecha y Hora actual : %tc", fecha);
@@ -30,23 +30,30 @@ public class ConstructorRefrigerador {
         System.out.println("Fecha2: " + fecha2);
         
         
-        
         LocalDate fecha3 = LocalDate.of(2015, Month.DECEMBER,22);
         System.out.println("fecha3: " + fecha3);
         
-        System.out.println(fecha2.compareTo(fecha3));
+System.out.println(fecha2.compareTo(fecha3));
         
         
         
         Refrigerador refri = new Refrigerador("Alienware", 1.9f, 2);
         
-        Seccion s1 = new Seccion("Heladera", 10, -20, 11, 200);
+        Seccion s1 = new Seccion("Heladera", 10, -20, 11, 200, "hola");
         
         refri.setSeccion(s1, 0);
-        refri.secciones[0].ajustarTemperatura();
+        //refri.secciones[0].ajustarTemperatura();
         
-        Producto p1 = new Producto("Pizza Congelada", fecha, "Plastico", "Bueno", 2, 200, 0.2f);
+        Producto p1 = new Producto("Pizza Congelada", fecha, "Plastico", "Bueno", 2, 20, 0.2f);
+        Producto p2 = new Producto("Jugo", fecha, "Plastico", "Bueno", 2, 30, 0.2f);
         
+        //refri.secciones[0].almacenarProducto(p1);
+        
+        refri.secciones[0].guardarProducto(p1, 0);
+        refri.secciones[0].guardarProducto(p2, 1);
+        System.out.println(refri.secciones[0].productos[0].getNombre());
+        System.out.println(refri.secciones[0].productos[1].getNombre());
+
         ProductoCarne pc1 = new ProductoCarne(fechaa);
         
         pc1.calcularFechaCaducidad();
@@ -54,7 +61,9 @@ public class ConstructorRefrigerador {
         refri.secciones[0].almacenarProducto(p1);
         
         System.out.println(fecha.compareTo(fechaa));
-        refri.secciones[0].pedirProductos();
+refri.secciones[0].pedirProductos();
+        
+        
         
         
     }

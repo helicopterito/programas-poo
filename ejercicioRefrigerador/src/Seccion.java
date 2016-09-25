@@ -19,6 +19,7 @@ public class Seccion {
     private float temperaturaMaxima;
     private float capacidad;
     private float capacidadEnUso;
+    protected Producto[] productos;
     
     public Seccion()
     {
@@ -33,6 +34,31 @@ public class Seccion {
         this.temperaturaMinima = temperaturaMinima;
         this.temperaturaMaxima = temperaturaMaxima;
         this.capacidad = capacidad;
+    }
+    
+    public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
+            float capacidad, int numeroDeProductos) {
+        this.identificador = identificador;
+        this.temperatura = temperatura;
+        this.temperaturaMinima = temperaturaMinima;
+        this.temperaturaMaxima = temperaturaMaxima;
+        this.capacidad = capacidad;
+        this.productos = new Producto[numeroDeProductos];
+    }
+    
+        
+    public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
+            float capacidad, String otracosa) {
+        
+        Scanner lector = new Scanner(System.in);
+                
+        this.identificador = identificador;
+        this.temperatura = temperatura;
+        this.temperaturaMinima = temperaturaMinima;
+        this.temperaturaMaxima = temperaturaMaxima;
+        this.capacidad = capacidad;
+        System.out.println("Cuantos productos? ");
+        this.productos = new Producto[lector.nextInt()];
     }
     
     public void enfriar()
@@ -104,6 +130,19 @@ public class Seccion {
         }
     }
     
+    public void guardarProducto(Producto producto, int posicion)
+    {
+        if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad()))
+        {
+            this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
+            this.productos[posicion] = producto;
+        }
+        else
+        {
+            System.out.println("Sin espacio disponible");
+        }
+    }
+    
     private float getCapacidadDisponible()
     {
         return this.capacidad - this.capacidadEnUso;
@@ -120,7 +159,7 @@ public class Seccion {
             this.capacidadEnUso -= (producto.getVolumenUnitario() * producto.getCantidad());
         }
     }
-    
+
     public void pedirProductos()
     {
         if(this.capacidadEnUso == 0)
@@ -132,7 +171,7 @@ public class Seccion {
             System.out.println("No se necesitan productos");
         }
         
-    }
+}
     
 
     public String getIdentificador() {

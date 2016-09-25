@@ -20,7 +20,7 @@ public class Producto {
     private float volumenUnitario;
     private float peso;
     private float contenidoNeto;
-    private float contenidoActual;
+private float contenidoActual;
     
     public Producto(String nombre, Date fechaDeCompra, String empaque, String estadoConservacion,
             float cantidad, float volumenUnitario, float peso)
@@ -38,7 +38,7 @@ public class Producto {
     {
         
     }
-    
+
     public void notificarDeReemplazo()
     {
         if(this.contenidoActual == 0)
@@ -62,7 +62,7 @@ public class Producto {
             return true;
         }
         return false;
-    }
+}
 
     public String getNombre() {
         return nombre;
@@ -119,7 +119,7 @@ public class Producto {
     public void setVolumenUnitario(float volumenUnitario) {
         this.volumenUnitario = volumenUnitario;
     }
-    
+
     public float getContenidoActual(){
         return contenidoActual;
     }
@@ -135,6 +135,6 @@ public class Producto {
 
     public void setContenidoNeto(float contenidoNeto) {
         this.contenidoNeto = contenidoNeto;
-    }
+}
     
 }
