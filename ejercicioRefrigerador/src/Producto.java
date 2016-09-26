@@ -6,12 +6,12 @@ import java.util.Date;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Néstor Alvarado Moreno
  */
 public class Producto {
+
     private String nombre;
     private Date fechaDeCompra;
     private String empaque; // a que se refiere?
@@ -20,11 +20,10 @@ public class Producto {
     private float volumenUnitario;
     private float peso;
     private float contenidoNeto;
-private float contenidoActual;
-    
+    private float contenidoActual;
+
     public Producto(String nombre, Date fechaDeCompra, String empaque, String estadoConservacion,
-            float cantidad, float volumenUnitario, float peso)
-    {
+            float cantidad, float volumenUnitario, float peso) {
         this.nombre = nombre;
         this.fechaDeCompra = fechaDeCompra;
         this.empaque = empaque;
@@ -33,36 +32,27 @@ private float contenidoActual;
         this.volumenUnitario = volumenUnitario;
         this.peso = peso;
     }
-    
-    public Producto()
-    {
-        
+
+    public Producto() {
+
     }
 
-    public void notificarDeReemplazo()
-    {
-        if(this.contenidoActual == 0)
-        {
+    public void notificarDeReemplazo() {
+        if (this.contenidoActual == 0) {
             System.out.println("El producto esta vacio");
-        }
-        else if(this.contenidoActual <= (this.contenidoNeto / 10))
-        {
+        } else if (this.contenidoActual <= (this.contenidoNeto / 10)) {
             System.out.println("El producto esta a punto de acabarse");
-        }
-        else
-        {
+        } else {
             System.out.println("Todavia hay producto");
         }
     }
-    
-    public boolean avisoReemplazo()
-    {
-        if(this.contenidoActual == 0)
-        {
+
+    public boolean avisoReemplazo() {
+        if (this.contenidoActual == 0) {
             return true;
         }
         return false;
-}
+    }
 
     public String getNombre() {
         return nombre;
@@ -120,21 +110,20 @@ private float contenidoActual;
         this.volumenUnitario = volumenUnitario;
     }
 
-    public float getContenidoActual(){
+    public float getContenidoActual() {
         return contenidoActual;
     }
-    
-    public void setContenidoActual(float contenidoActual)
-    {
+
+    public void setContenidoActual(float contenidoActual) {
         this.contenidoActual = contenidoActual;
     }
-    
+
     public float getContenidoNeto() {
         return contenidoNeto;
     }
 
     public void setContenidoNeto(float contenidoNeto) {
         this.contenidoNeto = contenidoNeto;
-}
-    
+    }
+
 }

@@ -9,43 +9,37 @@
  * @author uchitel
  */
 public class Refrigerador {
+
     private String marca;
     private float tamanio;
-    protected  Seccion[] secciones;
-    
-    public Refrigerador()
-    {
-        
+    protected Seccion[] secciones;
+
+    public Refrigerador() {
+
     }
-    
-    public Refrigerador(String marca, float tamanio, int numeroDeSecciones)
-    {
+
+    public Refrigerador(String marca, float tamanio, int numeroDeSecciones) {
         this.marca = marca;
         this.tamanio = tamanio;
         this.secciones = new Seccion[numeroDeSecciones];
-        
+
         /*for(int i = 0; i < numeroDeSecciones; i++)
         {
             secciones[i] = new Seccion();
         }*/
     }
-    
-    // Lo hace el refri o la seccion?
-    
-    public void enfriar()
-    {
-        
-    }
-    
-    // A que se refiere con esto?
-    
-    public void conservar()
-    {
-        
-    }
-    
-    // A que se refiere con esto?
 
+    // Lo hace el refri o la seccion?
+    public void enfriar() {
+
+    }
+
+    // A que se refiere con esto?
+    public void conservar() {
+
+    }
+
+    // A que se refiere con esto?
     public String getMarca() {
         return marca;
     }
@@ -69,6 +63,5 @@ public class Refrigerador {
     public void setSeccion(Seccion seccion, int i) {
         this.secciones[i] = seccion;
     }
-    
-    
+
 }

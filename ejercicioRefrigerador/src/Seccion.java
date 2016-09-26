@@ -6,13 +6,12 @@ import java.util.Scanner;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author uchitel
  */
 public class Seccion {
-    
+
     private String identificador;
     private float temperatura;
     private float temperaturaMinima;
@@ -20,22 +19,20 @@ public class Seccion {
     private float capacidad;
     private float capacidadEnUso;
     protected Producto[] productos;
-    
-    public Seccion()
-    {
-        
+
+    public Seccion() {
+
     }
-    
+
     public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
-            float capacidad)
-    {
+            float capacidad) {
         this.identificador = identificador;
         this.temperatura = temperatura;
         this.temperaturaMinima = temperaturaMinima;
         this.temperaturaMaxima = temperaturaMaxima;
         this.capacidad = capacidad;
     }
-    
+
     public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
             float capacidad, int numeroDeProductos) {
         this.identificador = identificador;
@@ -45,13 +42,12 @@ public class Seccion {
         this.capacidad = capacidad;
         this.productos = new Producto[numeroDeProductos];
     }
-    
-        
+
     public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
             float capacidad, String otracosa) {
-        
+
         Scanner lector = new Scanner(System.in);
-                
+
         this.identificador = identificador;
         this.temperatura = temperatura;
         this.temperaturaMinima = temperaturaMinima;
@@ -60,20 +56,17 @@ public class Seccion {
         System.out.println("Cuantos productos? ");
         this.productos = new Producto[lector.nextInt()];
     }
-    
-    public void enfriar()
-    {
-        if(this.temperatura == this.temperaturaMinima)
-        {
+
+    public void enfriar() {
+        if (this.temperatura == this.temperaturaMinima) {
             System.out.println("No se puede disminuir la temperatura");
         }
-        
+
         this.temperatura /= 2;
     }
-    
-    public void ajustarTemperatura()
-    {
-        
+
+    public void ajustarTemperatura() {
+
         char car;
         Scanner lector = new Scanner(System.in);
 
@@ -113,66 +106,46 @@ public class Seccion {
 
         } while (car != 'x' || car != 'X');
     }
-    
+
     // agregar metodo calentar??
-    
-    
     //que se refiere?
-    public void almacenarProducto(Producto producto)
-    {
-        if(this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad()))
-        {
+    public void almacenarProducto(Producto producto) {
+        if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad())) {
             this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
-        }
-        else
-        {
+        } else {
             System.out.println("Sin espacio disponible");
         }
     }
-    
-    public void guardarProducto(Producto producto, int posicion)
-    {
-        if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad()))
-        {
+
+    public void guardarProducto(Producto producto, int posicion) {
+        if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad())) {
             this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
             this.productos[posicion] = producto;
-        }
-        else
-        {
+        } else {
             System.out.println("Sin espacio disponible");
         }
     }
-    
-    private float getCapacidadDisponible()
-    {
+
+    private float getCapacidadDisponible() {
         return this.capacidad - this.capacidadEnUso;
     }
-    
-    public void sacarProducto(Producto producto)
-    {
-        if(this.capacidadEnUso - (producto.getVolumenUnitario() * producto.getCantidad()) < 0)
-        {
+
+    public void sacarProducto(Producto producto) {
+        if (this.capacidadEnUso - (producto.getVolumenUnitario() * producto.getCantidad()) < 0) {
             System.out.println("No se pueden sacar mas productos");
-        }
-        else
-        {
+        } else {
             this.capacidadEnUso -= (producto.getVolumenUnitario() * producto.getCantidad());
         }
     }
 
-    public void pedirProductos()
-    {
-        if(this.capacidadEnUso == 0)
-        {
+    public void pedirProductos() {
+        if (this.capacidadEnUso == 0) {
             System.out.println("Necesito productos, estoy vacio");
-        }
-        else
-        {
+        } else {
             System.out.println("No se necesitan productos");
         }
-        
-}
-    
+
+    }
 
     public String getIdentificador() {
         return identificador;
@@ -222,6 +195,4 @@ public class Seccion {
         this.capacidadEnUso = capacidadEnUso;
     }
 
-
-    
 }
