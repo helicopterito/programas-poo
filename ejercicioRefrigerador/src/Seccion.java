@@ -146,6 +146,20 @@ public class Seccion {
         }
 
     }
+    
+    public void mostrarProductosPorPedir()
+    {
+        int contador = 0;
+        for(Producto p : this.productos)
+        {
+            if(p.avisoReemplazo())
+            {
+                contador++;
+                System.out.println("El producto " + p.getNombre() + " necesita reabastecerse");
+            }
+        }
+        System.out.println("Total de productos por solicitar: " + contador);
+    }
 
     public String getIdentificador() {
         return identificador;
