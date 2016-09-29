@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
@@ -16,6 +17,7 @@ public class Refrigerador {
     private String marca;
     private float tamanio;
     protected Seccion[] secciones;
+    protected ArrayList<Seccion> seccionesDelRefri;
     private int posicionSeccion;
 
     public Refrigerador() {
@@ -43,6 +45,13 @@ public class Refrigerador {
         System.out.println("Cuantas secciones tiene el refrigerador?\nRespuesta:");
         this.secciones = new Seccion[lector.nextInt()];
     }
+    
+    public Refrigerador(String marca, float tamanio, ArrayList<Seccion> seccionesDelRefri)
+    {
+        this.marca = marca;
+        this.tamanio = tamanio;
+        this.seccionesDelRefri = seccionesDelRefri;
+    }
 
     // Lo hace el refri o la seccion?
     public void enfriar() {
@@ -57,6 +66,14 @@ public class Refrigerador {
     public void revisarInventario()
     {
         for(Seccion s : secciones)
+        {
+            s.mostrarProductosPorPedir();
+        }
+    }
+    
+    public void verInventario()
+    {
+        for(Seccion s : this.seccionesDelRefri)
         {
             s.mostrarProductosPorPedir();
         }
