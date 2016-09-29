@@ -19,6 +19,7 @@ public class Seccion {
     private float capacidad;
     private float capacidadEnUso;
     protected Producto[] productos;
+    private int productosAlmacenados;
 
     public Seccion() {
 
@@ -41,6 +42,7 @@ public class Seccion {
         this.temperaturaMaxima = temperaturaMaxima;
         this.capacidad = capacidad;
         this.productos = new Producto[numeroDeProductos];
+        this.productosAlmacenados = 0;
     }
 
     public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
@@ -53,6 +55,7 @@ public class Seccion {
         this.temperaturaMinima = temperaturaMinima;
         this.temperaturaMaxima = temperaturaMaxima;
         this.capacidad = capacidad;
+        this.productosAlmacenados = 0;
         System.out.println("Cuantos productos? ");
         this.productos = new Producto[lector.nextInt()];
     }
@@ -121,6 +124,16 @@ public class Seccion {
         if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad())) {
             this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
             this.productos[posicion] = producto;
+        } else {
+            System.out.println("Sin espacio disponible");
+        }
+    }
+    
+    public void guardarProducto(Producto producto) {
+        if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad())) {
+            this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
+            this.productos[this.productosAlmacenados] = producto;
+            this.productosAlmacenados++;
         } else {
             System.out.println("Sin espacio disponible");
         }

@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,6 +16,7 @@ public class Refrigerador {
     private String marca;
     private float tamanio;
     protected Seccion[] secciones;
+    private int posicionSeccion;
 
     public Refrigerador() {
 
@@ -27,6 +31,17 @@ public class Refrigerador {
         {
             secciones[i] = new Seccion();
         }*/
+    }
+    
+    public Refrigerador(String marca, float tamanio)
+    {
+        Scanner lector = new Scanner(System.in);
+        
+        this.marca = marca;
+        this.tamanio = tamanio;
+        this.posicionSeccion = 0;
+        System.out.println("Cuantas secciones tiene el refrigerador?\nRespuesta:");
+        this.secciones = new Seccion[lector.nextInt()];
     }
 
     // Lo hace el refri o la seccion?
@@ -68,8 +83,9 @@ public class Refrigerador {
         return secciones[i];
     }
 
-    public void setSeccion(Seccion seccion, int i) {
-        this.secciones[i] = seccion;
+    public void setSeccion(Seccion seccion) {
+        this.secciones[this.posicionSeccion] = seccion;
+        this.posicionSeccion++;
     }
 
 }

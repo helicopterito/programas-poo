@@ -31,11 +31,11 @@ public class ConstructorRefrigerador {
 
         System.out.println(fecha2.compareTo(fecha3));
 
-        Refrigerador refri = new Refrigerador("Alienware", 1.9f, 1);
+        Refrigerador refri = new Refrigerador("Alienware", 1.9f);
 
         Seccion s1 = new Seccion("Heladera", 10, -20, 11, 200, "hola");
 
-        refri.setSeccion(s1, 0);
+        refri.setSeccion(s1);
         //refri.secciones[0].ajustarTemperatura();
 
         Producto p1 = new Producto("Pizza Congelada", fecha, "Plastico", "Bueno", 2, 20, 0.2f, 100);
