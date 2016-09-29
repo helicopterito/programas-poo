@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
@@ -19,13 +20,14 @@ public class Seccion {
     private float capacidad;
     private float capacidadEnUso;
     protected Producto[] productos;
+    protected ArrayList<Producto> productosGuardados;
     private int productosAlmacenados;
 
     public Seccion() {
 
     }
 
-    public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
+/*    public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
             float capacidad) {
         this.identificador = identificador;
         this.temperatura = temperatura;
@@ -33,7 +35,7 @@ public class Seccion {
         this.temperaturaMaxima = temperaturaMaxima;
         this.capacidad = capacidad;
     }
-
+*/
     public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
             float capacidad, int numeroDeProductos) {
         this.identificador = identificador;
@@ -58,6 +60,22 @@ public class Seccion {
         this.productosAlmacenados = 0;
         System.out.println("Cuantos productos? ");
         this.productos = new Producto[lector.nextInt()];
+    }
+
+    public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
+            float capacidad, ArrayList productosGuardados) {
+
+        Scanner lector = new Scanner(System.in);
+
+        this.identificador = identificador;
+        this.temperatura = temperatura;
+        this.temperaturaMinima = temperaturaMinima;
+        this.temperaturaMaxima = temperaturaMaxima;
+        this.capacidad = capacidad;
+        this.productosAlmacenados = 0;
+        this.capacidadEnUso = 0;
+        this.productosGuardados = new ArrayList<>();
+        
     }
 
     public void enfriar() {
@@ -138,8 +156,20 @@ public class Seccion {
             System.out.println("Sin espacio disponible");
         }
     }
+    
+    public void guardarProductoEnSeccion(Producto producto)
+    {
+        if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad())) {
+            this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
+            this.productosGuardados.add(producto);
+            this.productosAlmacenados++;
+        } else {
+            System.out.println("Sin espacio disponible");
+        }
+    }
 
     private float getCapacidadDisponible() {
+        
         return this.capacidad - this.capacidadEnUso;
     }
 
@@ -173,7 +203,41 @@ public class Seccion {
         }
         System.out.println("Total de productos por solicitar: " + contador);
     }
-
+    
+    public void verProductosPorPedir()
+    {
+        int contador = 0;
+        for(Producto p : this.productosGuardados)
+        {
+            if(p.avisoReemplazo())
+            {
+                contador++;
+                System.out.println("El producto " + p.getNombre() + " necesita reabastecerse");
+            }
+        }
+        System.out.println("Total de productos por solicitar: " + contador);
+    }
+    
+    public void listarProducto()
+    {
+        int i = 0;
+        for(Producto p: this.productosGuardados)
+        {
+            System.out.println("Nombre del producto: " + p.getNombre() + "Numero: " + i);
+            i++;
+        }
+    }
+    
+    public void sacarProducto()
+    {
+        
+        Scanner lector = new Scanner(System.in);
+        
+        this.listarProducto();
+        System.out.println("Cual producto desea sacar?\nRespuesta: ");
+        this.productosGuardados.remove(lector.nextInt());
+    }
+    
     public String getIdentificador() {
         return identificador;
     }
