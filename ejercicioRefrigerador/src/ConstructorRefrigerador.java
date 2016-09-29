@@ -1,6 +1,7 @@
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Date;
 
 /*
@@ -60,7 +61,47 @@ public class ConstructorRefrigerador {
         refri.secciones[0].productos[0].setContenidoActual(0);
         System.out.println("****************");
         refri.revisarInventario();
+        
+        /*
+        
+        
+        	  ArrayList<String> obj = new ArrayList<>();
 
+	  
+	  obj.add("Ajeet");
+	  obj.add("Harry");
+	  obj.add("Chaitanya");
+	  obj.add("Steve");
+	  obj.add("Anuj");
+
+	  
+	  System.out.println("Currently the array list has following elements:"+obj);
+
+	  
+	  obj.add(0, "Rahul");
+	  obj.add(1, "Justin");
+
+	  
+	  obj.remove("Chaitanya");
+	  obj.remove("Harry");
+
+	  System.out.println("Current array list is:"+obj);
+
+	  
+	  obj.remove(1);
+
+	  System.out.println("Current array list is:"+obj);*/
+          
+          ArrayList<Seccion> obj1 = new ArrayList<Seccion>();
+          
+          obj1.add(s1);
+          System.out.println(obj1.getClass());
+          
+          Refrigerador refri2 = new Refrigerador("Asus", 500f, obj1);
+          System.out.println(refri2.seccionesDelRefri.get(0).getIdentificador());
+         
+          System.out.println(refri2.seccionesDelRefri.get(0).productosGuardados.size());
+//usar el constructor adecuado
     }
 
 }
