@@ -31,15 +31,15 @@ public class ConstructorRefrigerador {
 
         System.out.println(fecha2.compareTo(fecha3));
 
-        Refrigerador refri = new Refrigerador("Alienware", 1.9f, 2);
+        Refrigerador refri = new Refrigerador("Alienware", 1.9f, 1);
 
         Seccion s1 = new Seccion("Heladera", 10, -20, 11, 200, "hola");
 
         refri.setSeccion(s1, 0);
         //refri.secciones[0].ajustarTemperatura();
 
-        Producto p1 = new Producto("Pizza Congelada", fecha, "Plastico", "Bueno", 2, 20, 0.2f);
-        Producto p2 = new Producto("Jugo", fecha, "Plastico", "Bueno", 2, 30, 0.2f);
+        Producto p1 = new Producto("Pizza Congelada", fecha, "Plastico", "Bueno", 2, 20, 0.2f, 100);
+        Producto p2 = new Producto("Jugo", fecha, "Plastico", "Bueno", 2, 30, 0.2f, 300);
 
         //refri.secciones[0].almacenarProducto(p1);
         refri.secciones[0].guardarProducto(p1, 0);
@@ -55,6 +55,11 @@ public class ConstructorRefrigerador {
 
         System.out.println(fecha.compareTo(fechaa));
         refri.secciones[0].pedirProductos();
+        System.out.println("****************");
+        refri.revisarInventario();
+        refri.secciones[0].productos[0].setContenidoActual(0);
+        System.out.println("****************");
+        refri.revisarInventario();
 
     }
 

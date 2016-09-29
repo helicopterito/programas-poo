@@ -23,7 +23,7 @@ public class Producto {
     private float contenidoActual;
 
     public Producto(String nombre, Date fechaDeCompra, String empaque, String estadoConservacion,
-            float cantidad, float volumenUnitario, float peso) {
+            float cantidad, float volumenUnitario, float peso, float contenidoNeto) {
         this.nombre = nombre;
         this.fechaDeCompra = fechaDeCompra;
         this.empaque = empaque;
@@ -31,12 +31,18 @@ public class Producto {
         this.cantidad = cantidad;
         this.volumenUnitario = volumenUnitario;
         this.peso = peso;
+        this.contenidoNeto = contenidoNeto;
+        this.contenidoActual = contenidoNeto;
     }
 
     public Producto() {
 
     }
-
+/*
+    Este método revisa el contenido actual del producto, si es igual a 0 notifica al usuario para que lo reempleace
+    si tiene menos del 10% notifica que todavía hay y en caso contrario muestra un mensaje indicando
+    que todavía hay producto
+    */
     public void notificarDeReemplazo() {
         if (this.contenidoActual == 0) {
             System.out.println("El producto esta vacio");
@@ -46,7 +52,10 @@ public class Producto {
             System.out.println("Todavia hay producto");
         }
     }
-
+/*
+    Este método regresa verdadero si el contenido actual del producto es igual a 0
+    y false de otra forma
+    */
     public boolean avisoReemplazo() {
         if (this.contenidoActual == 0) {
             return true;

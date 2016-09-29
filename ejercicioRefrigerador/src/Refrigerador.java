@@ -38,6 +38,14 @@ public class Refrigerador {
     public void conservar() {
 
     }
+    
+    public void revisarInventario()
+    {
+        for(Seccion s : secciones)
+        {
+            s.mostrarProductosPorPedir();
+        }
+    }
 
     // A que se refiere con esto?
     public String getMarca() {
