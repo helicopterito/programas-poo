@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,35 +15,13 @@ public class Refrigerador {
 
     private String marca;
     private float tamanio;
-    protected Seccion[] secciones;
-    protected ArrayList<Seccion> seccionesDelRefri;
+    private ArrayList<Seccion> seccionesDelRefri;
     private int posicionSeccion;
 
     public Refrigerador() {
 
     }
 
-    public Refrigerador(String marca, float tamanio, int numeroDeSecciones) {
-        this.marca = marca;
-        this.tamanio = tamanio;
-        this.secciones = new Seccion[numeroDeSecciones];
-
-        /*for(int i = 0; i < numeroDeSecciones; i++)
-        {
-            secciones[i] = new Seccion();
-        }*/
-    }
-    
-    public Refrigerador(String marca, float tamanio)
-    {
-        Scanner lector = new Scanner(System.in);
-        
-        this.marca = marca;
-        this.tamanio = tamanio;
-        this.posicionSeccion = 0;
-        System.out.println("Cuantas secciones tiene el refrigerador?\nRespuesta:");
-        this.secciones = new Seccion[lector.nextInt()];
-    }
     
     public Refrigerador(String marca, float tamanio, ArrayList<Seccion> seccionesDelRefri)
     {
@@ -63,21 +40,6 @@ public class Refrigerador {
 
     }
     
-    public void revisarInventario()
-    {
-        for(Seccion s : secciones)
-        {
-            s.mostrarProductosPorPedir();
-        }
-    }
-    
-    public void verInventario()
-    {
-        for(Seccion s : this.seccionesDelRefri)
-        {
-            s.mostrarProductosPorPedir();
-        }
-    }
 
     // A que se refiere con esto?
     public String getMarca() {
@@ -96,13 +58,21 @@ public class Refrigerador {
         this.tamanio = tamanio;
     }
 
-    public Seccion getSeccion(int i) {
-        return secciones[i];
+    public ArrayList<Seccion> getSeccionesDelRefri() {
+        return seccionesDelRefri;
     }
 
-    public void setSeccion(Seccion seccion) {
-        this.secciones[this.posicionSeccion] = seccion;
-        this.posicionSeccion++;
+    public void setSeccionesDelRefri(ArrayList<Seccion> seccionesDelRefri) {
+        this.seccionesDelRefri = seccionesDelRefri;
     }
+
+    public int getPosicionSeccion() {
+        return posicionSeccion;
+    }
+
+    public void setPosicionSeccion(int posicionSeccion) {
+        this.posicionSeccion = posicionSeccion;
+    }
+
 
 }

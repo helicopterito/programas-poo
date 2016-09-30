@@ -32,75 +32,25 @@ public class ConstructorRefrigerador {
 
         System.out.println(fecha2.compareTo(fecha3));
 
-        Refrigerador refri = new Refrigerador("Alienware", 1.9f);
-
-        Seccion s1 = new Seccion("Heladera", 10, -20, 11, 200, "hola");
-
-        refri.setSeccion(s1);
-        //refri.secciones[0].ajustarTemperatura();
+        Seccion s1 = new Seccion("Heladera", 10, -20, 11, 200);
 
         Producto p1 = new Producto("Pizza Congelada", fecha, "Plastico", "Bueno", 2, 20, 0.2f, 100);
         Producto p2 = new Producto("Jugo", fecha, "Plastico", "Bueno", 2, 30, 0.2f, 300);
-
-        //refri.secciones[0].almacenarProducto(p1);
-        refri.secciones[0].guardarProducto(p1, 0);
-        refri.secciones[0].guardarProducto(p2, 1);
-        System.out.println(refri.secciones[0].productos[0].getNombre());
-        System.out.println(refri.secciones[0].productos[1].getNombre());
 
         ProductoCarne pc1 = new ProductoCarne(fechaa);
 
         pc1.calcularFechaCaducidad();
 
-        refri.secciones[0].almacenarProducto(p1);
+        ArrayList<Seccion> obj1 = new ArrayList<Seccion>();
 
-        System.out.println(fecha.compareTo(fechaa));
-        refri.secciones[0].pedirProductos();
-        System.out.println("****************");
-        refri.revisarInventario();
-        refri.secciones[0].productos[0].setContenidoActual(0);
-        System.out.println("****************");
-        refri.revisarInventario();
-        
-        /*
-        
-        
-        	  ArrayList<String> obj = new ArrayList<>();
+        obj1.add(s1);
+        System.out.println(obj1.getClass());
 
-	  
-	  obj.add("Ajeet");
-	  obj.add("Harry");
-	  obj.add("Chaitanya");
-	  obj.add("Steve");
-	  obj.add("Anuj");
+        Refrigerador refri2 = new Refrigerador("Asus", 500f, obj1);
+        System.out.println(refri2.getSeccionesDelRefri().get(0).getIdentificador());
 
-	  
-	  System.out.println("Currently the array list has following elements:"+obj);
-
-	  
-	  obj.add(0, "Rahul");
-	  obj.add(1, "Justin");
-
-	  
-	  obj.remove("Chaitanya");
-	  obj.remove("Harry");
-
-	  System.out.println("Current array list is:"+obj);
-
-	  
-	  obj.remove(1);
-
-	  System.out.println("Current array list is:"+obj);*/
-          
-          ArrayList<Seccion> obj1 = new ArrayList<Seccion>();
-          
-          obj1.add(s1);
-          System.out.println(obj1.getClass());
-          
-          Refrigerador refri2 = new Refrigerador("Asus", 500f, obj1);
-          System.out.println(refri2.seccionesDelRefri.get(0).getIdentificador());
-         
-          System.out.println(refri2.seccionesDelRefri.get(0).productosGuardados.size());
+        refri2.getSeccionesDelRefri().get(0).getProductos().add(p1);
+        System.out.println(refri2.getSeccionesDelRefri().get(0).getProductos().get(0).getNombre());
 //usar el constructor adecuado
     }
 

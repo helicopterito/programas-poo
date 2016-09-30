@@ -19,8 +19,7 @@ public class Seccion {
     private float temperaturaMaxima;
     private float capacidad;
     private float capacidadEnUso;
-    protected Producto[] productos;
-    protected ArrayList<Producto> productosGuardados;
+    private ArrayList<Producto> productos;
     private int productosAlmacenados;
 
     public Seccion() {
@@ -36,21 +35,10 @@ public class Seccion {
         this.capacidad = capacidad;
     }
 */
-    public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
-            float capacidad, int numeroDeProductos) {
-        this.identificador = identificador;
-        this.temperatura = temperatura;
-        this.temperaturaMinima = temperaturaMinima;
-        this.temperaturaMaxima = temperaturaMaxima;
-        this.capacidad = capacidad;
-        this.productos = new Producto[numeroDeProductos];
-        this.productosAlmacenados = 0;
-    }
+
 
     public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
-            float capacidad, String otracosa) {
-
-        Scanner lector = new Scanner(System.in);
+            float capacidad) {
 
         this.identificador = identificador;
         this.temperatura = temperatura;
@@ -58,25 +46,11 @@ public class Seccion {
         this.temperaturaMaxima = temperaturaMaxima;
         this.capacidad = capacidad;
         this.productosAlmacenados = 0;
-        System.out.println("Cuantos productos? ");
-        this.productos = new Producto[lector.nextInt()];
+        this.productos = new ArrayList<>();
+   
     }
 
-    public Seccion(String identificador, float temperatura, float temperaturaMinima, float temperaturaMaxima,
-            float capacidad, ArrayList productosGuardados) {
 
-        Scanner lector = new Scanner(System.in);
-
-        this.identificador = identificador;
-        this.temperatura = temperatura;
-        this.temperaturaMinima = temperaturaMinima;
-        this.temperaturaMaxima = temperaturaMaxima;
-        this.capacidad = capacidad;
-        this.productosAlmacenados = 0;
-        this.capacidadEnUso = 0;
-        this.productosGuardados = new ArrayList<>();
-        
-    }
 
     public void enfriar() {
         if (this.temperatura == this.temperaturaMinima) {
@@ -128,41 +102,16 @@ public class Seccion {
         } while (car != 'x' || car != 'X');
     }
 
-    // agregar metodo calentar??
-    //que se refiere?
-    public void almacenarProducto(Producto producto) {
-        if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad())) {
-            this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
-        } else {
-            System.out.println("Sin espacio disponible");
-        }
-    }
 
-    public void guardarProducto(Producto producto, int posicion) {
-        if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad())) {
-            this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
-            this.productos[posicion] = producto;
-        } else {
-            System.out.println("Sin espacio disponible");
-        }
-    }
+
     
-    public void guardarProducto(Producto producto) {
-        if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad())) {
-            this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
-            this.productos[this.productosAlmacenados] = producto;
-            this.productosAlmacenados++;
-        } else {
-            System.out.println("Sin espacio disponible");
-        }
-    }
     
     public void guardarProductoEnSeccion(Producto producto)
     {
         if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad())) {
             this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
-            this.productosGuardados.add(producto);
-            this.productosAlmacenados++;
+            this.getProductos().add(producto);
+            this.setProductosAlmacenados(this.getProductosAlmacenados() + 1);
         } else {
             System.out.println("Sin espacio disponible");
         }
@@ -190,24 +139,12 @@ public class Seccion {
 
     }
     
-    public void mostrarProductosPorPedir()
-    {
-        int contador = 0;
-        for(Producto p : this.productos)
-        {
-            if(p.avisoReemplazo())
-            {
-                contador++;
-                System.out.println("El producto " + p.getNombre() + " necesita reabastecerse");
-            }
-        }
-        System.out.println("Total de productos por solicitar: " + contador);
-    }
+
     
     public void verProductosPorPedir()
     {
         int contador = 0;
-        for(Producto p : this.productosGuardados)
+        for(Producto p : this.getProductos())
         {
             if(p.avisoReemplazo())
             {
@@ -221,7 +158,7 @@ public class Seccion {
     public void listarProducto()
     {
         int i = 0;
-        for(Producto p: this.productosGuardados)
+        for(Producto p: this.getProductos())
         {
             System.out.println("Nombre del producto: " + p.getNombre() + "Numero: " + i);
             i++;
@@ -235,7 +172,7 @@ public class Seccion {
         
         this.listarProducto();
         System.out.println("Cual producto desea sacar?\nRespuesta: ");
-        this.productosGuardados.remove(lector.nextInt());
+        this.getProductos().remove(lector.nextInt());
     }
     
     public String getIdentificador() {
@@ -284,6 +221,22 @@ public class Seccion {
 
     public void setCapacidadEnUso(float capacidadEnUso) {
         this.capacidadEnUso = capacidadEnUso;
+    }
+
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public int getProductosAlmacenados() {
+        return productosAlmacenados;
+    }
+
+    public void setProductosAlmacenados(int productosAlmacenados) {
+        this.productosAlmacenados = productosAlmacenados;
     }
 
 }
