@@ -60,6 +60,10 @@ public class Seccion {
         this.temperatura /= 2;
     }
 
+    /*
+    La sección aumenta o disminuye su temperatura hasta llegar a su temperatura máxima en caso de aumentar o mínima
+    en caso de disminuir
+    */
     public void ajustarTemperatura() {
 
         char car;
@@ -106,7 +110,7 @@ public class Seccion {
 
     
     
-    public void guardarProductoEnSeccion(Producto producto)
+    public void guardarProducto(Producto producto)
     {
         if (this.getCapacidadDisponible() >= (producto.getVolumenUnitario() * producto.getCantidad())) {
             this.capacidadEnUso += (producto.getVolumenUnitario() * producto.getCantidad());
@@ -139,7 +143,10 @@ public class Seccion {
 
     }
     
-
+/*
+    La sección realiza un listado de los productos que necesitan ser reemplazados e imprime el total que deben ser
+    resurtidos
+    */
     
     public void verProductosPorPedir()
     {
@@ -154,7 +161,9 @@ public class Seccion {
         }
         System.out.println("Total de productos por solicitar: " + contador);
     }
-    
+    /*
+    Este método hace un listado de todos los productos que hay en el refrigerador
+    */
     public void listarProducto()
     {
         int i = 0;

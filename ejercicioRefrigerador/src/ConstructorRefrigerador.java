@@ -51,6 +51,8 @@ public class ConstructorRefrigerador {
 
         refri2.getSeccionesDelRefri().get(0).getProductos().add(p1);
         System.out.println(refri2.getSeccionesDelRefri().get(0).getProductos().get(0).getNombre());
+        refri2.getSeccionesDelRefri().get(0).guardarProducto(p2);
+        System.out.println(refri2.getSeccionesDelRefri().get(0).getProductos().get(1).getNombre());
 //usar el constructor adecuado
     }
 
