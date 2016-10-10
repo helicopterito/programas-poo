@@ -1,11 +1,11 @@
 package codigo;
-import java.util.*;
 
 
 public class Bibliotecario extends Persona {
 
 
-    public Bibliotecario() {
+    public Bibliotecario(String nombre) {
+        super(nombre);
     }
 
 
