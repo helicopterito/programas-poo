@@ -4,8 +4,8 @@ package codigo;
 public class Bibliotecario extends Persona {
 
 
-    public Bibliotecario(String nombre) {
-        super(nombre);
+    public Bibliotecario(String nombre, String direccion) {
+        super(nombre, direccion);
     }
 
 
