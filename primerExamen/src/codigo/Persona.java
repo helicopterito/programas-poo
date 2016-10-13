@@ -1,30 +1,38 @@
 package codigo;
 
 
-public class Bibliotecario extends Persona {
-
-
-    public Bibliotecario(String nombre, String direccion) {
-        super(nombre, direccion);
+/**
+ * 
+ */
+public class Persona {
+    
+    private String nombre;
+    private String direccion;
+    
+    /**
+     * Default constructor
+     */
+    public Persona(String nombre, String direccion) {
+        this.nombre = nombre;
+        this.direccion = direccion;
     }
 
 
 
-    public void comprobarEstadoDeLibro() {
-        // TODO implement here
-        
+    public String getNombre() {
+        return nombre;
     }
 
-
-    public boolean llevarLibroARestaurar(Libro libro) {
-        // TODO implement here
-        return false;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
 
-    public void desecharLibro(Libro libro) {
-        // TODO implement here
-        
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
 }
