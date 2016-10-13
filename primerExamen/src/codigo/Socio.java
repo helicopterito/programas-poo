@@ -1,28 +1,18 @@
 package codigo;
 
-
-
 public class Socio extends Persona {
 
+    private String numeroDeSocio;
+    private int numeroDeLibrosEnPrestamo;
 
-    public Socio(String nombre, String numeroDeSocio, String direccion, int numeroDeLibrosEnPrestamo) {
-        super(nombre);
-        this.direccion = direccion;
+    public Socio(String nombre, String direccion, String numeroDeSocio, int numeroDeLibrosEnPrestamo) {
+        super(nombre, direccion);
         this.numeroDeSocio = numeroDeSocio;
         this.numeroDeLibrosEnPrestamo = numeroDeLibrosEnPrestamo;
     }
 
-
-    private String numeroDeSocio;
-    private String direccion;
-    private int numeroDeLibrosEnPrestamo;
-
-
-
-
     public void pedirLibroPrestado() {
-        
-        
+
     }
 
     public String getNumeroDeSocio() {
@@ -33,13 +23,7 @@ public class Socio extends Persona {
         this.numeroDeSocio = numeroDeSocio;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+    
 
     public int getNumeroDeLibrosEnPrestamo() {
         return numeroDeLibrosEnPrestamo;
