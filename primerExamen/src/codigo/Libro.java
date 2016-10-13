@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 public class Libro {
 
-    public Libro() {
-    }
+
 
     private String codigo;
     private String titulo;
@@ -16,7 +15,17 @@ public class Libro {
     private String signatura;
     private String ubicacion;
     private String estadoDeConservacion;
-
+    
+    public Libro(String codigo, String titulo, String autor, boolean disponible, String signatura,
+            String ubicacion, String estadoDeConservacion) {
+        this.codigo = codigo;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.disponible = disponible;
+        this.signatura = signatura;
+        this.ubicacion = ubicacion;
+        this.estadoDeConservacion = estadoDeConservacion;
+    }
     public void cambiarDeLugar() {
         Scanner lector = new Scanner(System.in);
         System.out.println("Introduzca el nuevo lugar: ");
