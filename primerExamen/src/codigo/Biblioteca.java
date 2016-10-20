@@ -13,13 +13,23 @@ public class Biblioteca {
     private String direccion;
 
     public Biblioteca() {
-//        this.sociosNoFiables = null;
+        this.sociosNoFiables = new ArrayList();
         this.socios = new ArrayList();
-  //      this.bibliotecarios = null;
-    //    this.libros = null;
-      //  this.prestamos = null;
+        this.bibliotecarios = new ArrayList();
+        this.libros = new ArrayList();
+        this.prestamos = new ArrayList();
         this.nombre = "";
         this.direccion = "";
+    }
+    
+        public Biblioteca(String nombre, String direccion) {
+        this.sociosNoFiables = new ArrayList();
+        this.socios = new ArrayList();
+        this.bibliotecarios = new ArrayList();
+        this.libros = new ArrayList();
+        this.prestamos = new ArrayList();
+        this.nombre = nombre;
+        this.direccion = direccion;
     }
 
     public void darDeAltaSocio(Socio socio) {
@@ -130,6 +140,11 @@ public class Biblioteca {
         
         
         
+    }
+    
+    public void agregarPrestamo(Prestamo prestamo)
+    {
+        prestamos.add(prestamo);
     }
 
     public void multarSocio(Socio socio) {
