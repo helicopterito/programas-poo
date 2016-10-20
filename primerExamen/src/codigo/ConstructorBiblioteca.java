@@ -46,6 +46,12 @@ public class ConstructorBiblioteca {
         
         Prestamo p3 = new Prestamo(ls1, s3);
         p3.imprimirDatos(0);
+        
+        b1.darDeAltaSocio();
+        b1.modificarSocio();
+        
+        //b1.darDeBajaSocio();
+        
 
     }
 

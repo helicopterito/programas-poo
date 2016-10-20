@@ -1,5 +1,7 @@
 package codigo;
 
+import java.util.Scanner;
+
 
 /**
  * 
@@ -15,6 +17,15 @@ public class Persona {
     public Persona(String nombre, String direccion) {
         this.nombre = nombre;
         this.direccion = direccion;
+    }
+    
+    public Persona()
+    {
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Introduzca el nombre: ");
+        this.nombre = lector.nextLine();
+        System.out.println("Introduzca la direccion: ");
+        this.direccion = lector.nextLine();
     }
 
 

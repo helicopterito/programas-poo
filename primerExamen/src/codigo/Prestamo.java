@@ -10,6 +10,7 @@ public class Prestamo {
     private Libro libro;
     private ArrayList<Libro> libros;
     private Socio socio;
+    private boolean estadoPrestamo;
     
 
     
@@ -18,6 +19,7 @@ public class Prestamo {
         this.fechaDeEntrega = fechaDeEntrega;
         this.socio = socio;
         this.libro = libro;
+        this.estadoPrestamo = true;
     }
     
     public Prestamo(Libro libro, Socio socio) {
@@ -28,6 +30,7 @@ public class Prestamo {
         this.socio = socio;
         this.libro = libro;
         this.libros = null;
+        this.estadoPrestamo = true;
     }
     
     public Prestamo(ArrayList<Libro> libros, Socio socio)
@@ -39,6 +42,12 @@ public class Prestamo {
         this.socio = socio;
         this.libros = libros;
         this.libro = null;
+        this.estadoPrestamo = true;
+        
+        for(Libro l : this.libros)
+        {
+            l.setDisponible(false);
+        }
     }
     
     public void imprimirDatos()
@@ -48,6 +57,7 @@ public class Prestamo {
         System.out.println("Titulo del libro: " + libro.getTitulo());
         System.out.println("Fecha en que se realizo el prestamo: " + fechaDePrestamo);
         System.out.println("Fecha de entrega: " + fechaDeEntrega);
+        System.out.println("Estado del prestamo: " + estadoPrestamo);
     }
     
     public void imprimirDatos(int i) {
@@ -59,8 +69,21 @@ public class Prestamo {
         }
         System.out.println("Fecha en que se realizo el prestamo: " + fechaDePrestamo);
         System.out.println("Fecha de entrega: " + fechaDeEntrega);
+        System.out.println("Estado del prestamo: " + estadoPrestamo);
 
     }
+    
+    public int calcularNumeroDeLibros()
+    {
+        return this.libros.size();
+    }
+    
+    public boolean revisarFechaDevolucion()
+    {
+        Date fechaDeHoy = new Date();
+        return fechaDeHoy.after(fechaDeEntrega);
+    }
+    
 
     public Date getFechaDePrestamo() {
         return fechaDePrestamo;

@@ -1,5 +1,7 @@
 package codigo;
 
+import java.util.Scanner;
+
 public class Socio extends Persona {
 
     private String numeroDeSocio;
@@ -9,6 +11,18 @@ public class Socio extends Persona {
         super(nombre, direccion);
         this.numeroDeSocio = numeroDeSocio;
         this.numeroDeLibrosEnPrestamo = numeroDeLibrosEnPrestamo;
+    }
+    
+    public Socio()
+    {
+        super();
+        
+        Scanner lector = new Scanner(System.in);
+        
+        System.out.println("Introduzca el numero de socio: ");
+        this.numeroDeSocio = lector.nextLine();
+        this.numeroDeLibrosEnPrestamo = 0;
+        
     }
 
     public void pedirLibroPrestado() {

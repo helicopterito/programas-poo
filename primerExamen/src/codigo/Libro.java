@@ -26,6 +26,24 @@ public class Libro {
         this.ubicacion = ubicacion;
         this.estadoDeConservacion = estadoDeConservacion;
     }
+    
+    public Libro()
+    {
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Codigo: ");
+        codigo = lector.next();
+        System.out.println("Titulo: ");
+        titulo = lector.next();
+        System.out.println("Autor: ");
+        autor = lector.next();
+        disponible = true;
+        System.out.println("Signatura: ");
+        signatura = lector.next();
+        System.out.println("Ubicacion: ");
+        ubicacion = lector.next();
+        System.out.println("Estado de conservacion: ");
+        estadoDeConservacion = lector.next();
+    }
     public void cambiarDeLugar() {
         Scanner lector = new Scanner(System.in);
         System.out.println("Introduzca el nuevo lugar: ");
