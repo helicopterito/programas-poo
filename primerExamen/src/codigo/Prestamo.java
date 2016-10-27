@@ -14,6 +14,8 @@ public class Prestamo {
     
 
     
+    /*Instanciamos un préstamo pasando 2 fechas como parámetro, un Libro
+     y un socio*/
     public Prestamo(Date fechaDePrestamo, Date fechaDeEntrega, Libro libro, Socio socio) {
         this.fechaDePrestamo = fechaDePrestamo;
         this.fechaDeEntrega = fechaDeEntrega;
@@ -22,6 +24,10 @@ public class Prestamo {
         this.estadoPrestamo = true;
     }
     
+    /*
+    Instanciamos un Prestamo pasando un Libro y Socio como parámetros. Utilizamos la fecha actual para inicializar
+    fechaDePrestamo y calculamos la fechaDeEntrega a partir de 5 días en adelante
+    */
     public Prestamo(Libro libro, Socio socio) {
         //Fecha en que se realiza el préstamo. Toma la fecha en que se ejecuta el método
         this.fechaDePrestamo = new Date();
@@ -32,6 +38,12 @@ public class Prestamo {
         this.libros = null;
         this.estadoPrestamo = true;
     }
+    
+    /*
+    Este método recibe un ArrayList de Libros como parámetro y 1 Socio
+    Utilizamos la fecha actual para inicializar
+    fechaDePrestamo y calculamos la fechaDeEntrega a partir de 5 días en adelante
+    */
     
     public Prestamo(ArrayList<Libro> libros, Socio socio)
     {
@@ -50,6 +62,10 @@ public class Prestamo {
         }
     }
     
+    /*
+    imprimirDatos() muestra en pantalla el nombre y direccion del Socio, el título del libro
+    y el estado y la fecha de realizacion y entrega del Prestamo
+    */
     public void imprimirDatos()
     {
         System.out.println("Nombre del socio: " + socio.getNombre());
@@ -59,6 +75,11 @@ public class Prestamo {
         System.out.println("Fecha de entrega: " + fechaDeEntrega);
         System.out.println("Estado del prestamo: " + estadoPrestamo);
     }
+    
+    /*
+    imprimirDatos(int) muestra en pantalla el nombre y direccion del Socio, el título de los libros
+    y el estado y la fecha de realizacion y entrega del Prestamo
+    */
     
     public void imprimirDatos(int i) {
         System.out.println("Nombre del socio: " + socio.getNombre());
@@ -78,12 +99,17 @@ public class Prestamo {
         return this.libros.size();
     }
     
+    /*
+    revisarFechaDevolucion() revisa si ya pasó la fechaDeEntrega del Prestamo
+    */
+    
     public boolean revisarFechaDevolucion()
     {
         Date fechaDeHoy = new Date();
         return fechaDeHoy.after(fechaDeEntrega);
     }
     
+    //getters y setters
 
     public Date getFechaDePrestamo() {
         return fechaDePrestamo;
