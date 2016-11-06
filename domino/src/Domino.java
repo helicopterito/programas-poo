@@ -216,6 +216,10 @@ public class Domino {
                         }
                     } else {
                         System.out.println("El jugador ha pasado su turno");
+                        this.turno++;
+                         if (this.turno == 4) {
+                this.turno = 0;
+            }
                         continue;
 
                     }
