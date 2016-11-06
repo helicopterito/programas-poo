@@ -84,32 +84,30 @@ public class Domino {
 
     public boolean  validarFicha(Ficha ficha, char car)
     {
-        if (car == 'D') {
-            if ((this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoDerecho() == ficha.getLadoIzquierdo())
-                    || (this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoDerecho() == ficha.getLadoDerecho())
-                    || (this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoIzquierdo() == ficha.getLadoIzquierdo()
-                    || (this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoIzquierdo() == ficha.getLadoDerecho()))
-                    ) {
-                return true;
-            } else {
+        
+        switch (car) {
+            case 'D':
+                if ((this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoDerecho() == ficha.getLadoIzquierdo())
+                        || (this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoDerecho() == ficha.getLadoDerecho())
+                        || (this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoIzquierdo() == ficha.getLadoIzquierdo()
+                        || (this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoIzquierdo() == ficha.getLadoDerecho()))
+                        ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            case 'I':
+                if ((this.fichasTiradas.get(0).getLadoIzquierdo() == ficha.getLadoDerecho())
+                        || this.fichasTiradas.get(0).getLadoIzquierdo() == ficha.getLadoIzquierdo()
+                        || (this.fichasTiradas.get(0).getLadoDerecho() == ficha.getLadoIzquierdo())
+                        || (this.fichasTiradas.get(0).getLadoDerecho() == ficha.getLadoDerecho())) {
+                    return true;
+                } else {
+                    return false;
+                }
+                
+            default:
                 return false;
-            }
-
-        } else if (car == 'I') {
-
-            if ((this.fichasTiradas.get(0).getLadoIzquierdo() == ficha.getLadoDerecho())
-                    || this.fichasTiradas.get(0).getLadoIzquierdo() == ficha.getLadoIzquierdo()
-                    || (this.fichasTiradas.get(0).getLadoDerecho() == ficha.getLadoIzquierdo())
-                    || (this.fichasTiradas.get(0).getLadoDerecho() == ficha.getLadoDerecho())) {
-                return true;
-            } else {
-                return false;
-            }
-
-        }
-        else
-        {
-            return false;
         }
         
     }
@@ -157,11 +155,12 @@ public class Domino {
 
                     if (fichaATirar.isEsValida()) {
                         System.out.println("Tirar por la [D]erecha o [I]zquierda ");
-                        direccion = lector.next().charAt(0);
+                        direccion = lector.next().toUpperCase().charAt(0);
 
                         if (direccion == 'D') {
                             if (validarFicha(fichaATirar, direccion)) {
                                 fichasTiradas.add(fichaATirar);
+                                this.jugadores.get(turno).fichasDeJugador.remove(fichaATirar);
                             } else {
                                 System.out.println("Movimiento no permitido");
                                 continue;
@@ -171,6 +170,7 @@ public class Domino {
 
                             if (validarFicha(fichaATirar, direccion)) {
                                 fichasTiradas.add(0, fichaATirar);
+                                this.jugadores.get(turno).fichasDeJugador.remove(fichaATirar);
                             } else {
                                 System.out.println("Movimiento no permitido");
                                 continue;
@@ -203,7 +203,7 @@ public class Domino {
 
         }
         
-        System.out.println("El jugador #" + turno + " ha ganado");
+        System.out.println("El jugador #" + (turno + 1) + " ha ganado");
     }
     
     public void imprimirFichasEnJuego()

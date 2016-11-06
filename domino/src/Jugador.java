@@ -32,7 +32,7 @@ public class Jugador {
             return ficha;
         } else {
             ficha = this.fichasDeJugador.get(respuesta);
-            this.fichasDeJugador.remove(this.fichasDeJugador.get(respuesta));
+            //this.fichasDeJugador.remove(this.fichasDeJugador.get(respuesta));
             return ficha;
         }
 
