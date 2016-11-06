@@ -20,27 +20,7 @@ import java.util.logging.Logger;
  * @author Néstor Alvarado Moreno
  */
 public class Domino {
-    
-   
-    
-    /*class Nodo<Ficha>
-    {
-        Nodo siguiente;
-        Nodo anterior;
-        Ficha ficha;
-        
-        public Nodo(Ficha valor)
 
-        {
-            this.ficha = valor;
-        }
-    
-    }*/
-    
-    
-    
-  //  Nodo inicio;
-   // Nodo fin;
     ArrayList<Ficha> fichasDeJuego;
     ArrayList<Jugador> jugadores;
     ArrayList<Ficha> fichasTiradas;
@@ -101,24 +81,7 @@ public class Domino {
     }
     
     
- /*   public void agregarInicio(Ficha ficha)
-    {
-        Nodo nuevoNodo = new Nodo(ficha);
-        
-        if(estaVacia())
-        {
-            inicio = nuevoNodo;
-            fin = nuevoNodo;
-        }
-        else
-        {
-            
-            inicio.anterior = nuevoNodo;
-            nuevoNodo.siguiente = inicio;
-            inicio = nuevoNodo;
-        }
-    }
- */   
+
     public boolean  validarFicha(Ficha ficha, char car)
     {
         if (car == 'D') {
@@ -144,13 +107,13 @@ public class Domino {
             }
 
         }
-        return false;
+        else
+        {
+            return false;
+        }
+        
     }
     
-   /* public boolean estaVacia()
-    {
-        return inicio == null;
-    }*/
     
     public int buscarMulaDeSeis()
     {
@@ -217,9 +180,9 @@ public class Domino {
                     } else {
                         System.out.println("El jugador ha pasado su turno");
                         this.turno++;
-                         if (this.turno == 4) {
-                this.turno = 0;
-            }
+                        if (this.turno == 4) {
+                            this.turno = 0;
+                        }
                         continue;
 
                     }
@@ -227,9 +190,8 @@ public class Domino {
                 } catch (IOException ex) {
                     Logger.getLogger(Domino.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                if(this.jugadores.get(turno).fichasDeJugador.isEmpty())
-                {
+
+                if (this.jugadores.get(turno).fichasDeJugador.isEmpty()) {
                     this.hayGanador = true;
                 }
                 turno++;
@@ -240,6 +202,8 @@ public class Domino {
             }
 
         }
+        
+        System.out.println("El jugador #" + turno + " ha ganado");
     }
     
     public void imprimirFichasEnJuego()
@@ -272,41 +236,7 @@ public class Domino {
         d1.jugadores.add(j1);
         d1.jugadores.add(j2);
         d1.jugadores.add(j3);
-        d1.jugadores.add(j4);
-       /* System.out.println(d1.fichasDeJuego.size());
-        d1.crearSopa();
-        System.out.println(d1.fichasDeJuego.size());
-        //d1.repartirFichas();
-        d1.repartirAlJugador();
-        int i = 0;
-        for(Ficha f : d1.fichasDeJuego)
-        {
-            System.out.println(i + " " + f.getLadoIzquierdo() + "|" + f.getLadoDerecho());
-            i++;
-        }
-        
-      
-        
-       for(Jugador j : d1.jugadores)
-       {
-           System.out.println("\nJugador");
-           for(Ficha f : j.fichasDeJugador)
-           {
-               System.out.println(f.getLadoIzquierdo() + "|" + f.getLadoDerecho());
-           }
-       }
-       
-        System.out.println(d1.buscarMulaDeSeis());
-       /* try {
-            System.out.println(d1.jugadores.get(0).fichasDeJugador.size());
-            Ficha f1 = d1.jugadores.get(0).tirarFicha();
-            
-            System.out.println(f1.getLadoIzquierdo() + "|" + f1.getLadoDerecho());
-            System.out.println(d1.jugadores.get(0).fichasDeJugador.size());
-        } catch (IOException ex) {
-            Logger.getLogger(Domino.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        
+        d1.jugadores.add(j4);        
         d1.comenzarJuego();
  
         
