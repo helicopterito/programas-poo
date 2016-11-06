@@ -1,6 +1,12 @@
 
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 /*
@@ -17,7 +23,7 @@ public class Domino {
     
    
     
-    class Nodo<Ficha>
+    /*class Nodo<Ficha>
     {
         Nodo siguiente;
         Nodo anterior;
@@ -29,14 +35,15 @@ public class Domino {
             this.ficha = valor;
         }
     
-    }
+    }*/
     
     
     
-    Nodo inicio;
-    Nodo fin;
+  //  Nodo inicio;
+   // Nodo fin;
     ArrayList<Ficha> fichasDeJuego;
     ArrayList<Jugador> jugadores;
+    ArrayList<Ficha> fichasTiradas;
     int turno;
     boolean hayGanador;
     
@@ -94,7 +101,7 @@ public class Domino {
     }
     
     
-    public void agregarInicio(Ficha ficha)
+ /*   public void agregarInicio(Ficha ficha)
     {
         Nodo nuevoNodo = new Nodo(ficha);
         
@@ -111,17 +118,17 @@ public class Domino {
             inicio = nuevoNodo;
         }
     }
-    
+ */   
     public boolean  validarFicha()
     {
     //    if(inicio.ficha)
         return true;
     }
     
-    public boolean estaVacia()
+   /* public boolean estaVacia()
     {
         return inicio == null;
-    }
+    }*/
     
     public int buscarMulaDeSeis()
     {
@@ -142,9 +149,78 @@ public class Domino {
     
     public void comenzarJuego()
     {
-        while(!hayGanador)
+        Scanner lector = new Scanner(System.in);
+        
+        iniciarJuego();
+        turno = buscarMulaDeSeis();
+
+        char direccion;
+
+        while (!hayGanador) {
+
+            if (this.fichasTiradas.size() == 0) {
+                try {
+                    fichasTiradas.add(this.jugadores.get(turno).tirarFicha());
+                    this.turno++;
+                } catch (IOException ex) {
+                    Logger.getLogger(Domino.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                this.imprimirFichasEnJuego();
+                try {
+                    Ficha fichaATirar = this.jugadores.get(turno).tirarFicha();
+                
+                    System.out.println("Tirar por la [D]erecha o [I]zquierda ");
+                    direccion = lector.next().charAt(0);
+                    
+                    if(direccion == 'D')
+                    {
+                        if((this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoDerecho() == fichaATirar.getLadoIzquierdo())
+                                || (this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoDerecho() == fichaATirar.getLadoDerecho()))
+                        {
+                            fichasTiradas.add(fichaATirar);
+                        }
+                        else
+                        {
+                            System.out.println("Movimiento no permitido");
+                        }
+                        
+                    }
+                    else if(direccion == 'I')
+                    {
+                        
+                        if(this.fichasTiradas.get(0).getLadoIzquierdo() == fichaATirar.getLadoDerecho())
+                        {
+                            fichasTiradas.add(0, fichaATirar);
+                        }
+                        else
+                        {
+                            System.out.println("Movimiento no permitido");
+                        }
+                    
+                    
+                        
+                    }
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(Domino.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                turno++;
+            }
+
+            if (this.turno == 4) {
+                this.turno = 0;
+            }
+
+        }
+    }
+    
+    public void imprimirFichasEnJuego()
+    {
+        for(Ficha f : this.fichasTiradas)
         {
-            
+            System.out.println("Fichas del juego: ");
+            System.out.println(f.getLadoIzquierdo() + "|" + f.getLadoDerecho());
         }
     }
     
@@ -152,6 +228,7 @@ public class Domino {
     {
         this.fichasDeJuego = new ArrayList();
         this.jugadores = new ArrayList();
+        this.fichasTiradas = new ArrayList();
         this.turno = 0;
         this.hayGanador = false;
         
@@ -168,7 +245,7 @@ public class Domino {
         d1.jugadores.add(j2);
         d1.jugadores.add(j3);
         d1.jugadores.add(j4);
-        System.out.println(d1.fichasDeJuego.size());
+       /* System.out.println(d1.fichasDeJuego.size());
         d1.crearSopa();
         System.out.println(d1.fichasDeJuego.size());
         //d1.repartirFichas();
@@ -192,6 +269,18 @@ public class Domino {
        }
        
         System.out.println(d1.buscarMulaDeSeis());
+       /* try {
+            System.out.println(d1.jugadores.get(0).fichasDeJugador.size());
+            Ficha f1 = d1.jugadores.get(0).tirarFicha();
+            
+            System.out.println(f1.getLadoIzquierdo() + "|" + f1.getLadoDerecho());
+            System.out.println(d1.jugadores.get(0).fichasDeJugador.size());
+        } catch (IOException ex) {
+            Logger.getLogger(Domino.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        
+        d1.comenzarJuego();
+ 
         
     }
 }

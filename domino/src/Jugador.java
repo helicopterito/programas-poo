@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,26 +16,26 @@ public class Jugador {
     
     ArrayList<Ficha> fichasDeJugador;
         
-        int tirarFicha() throws java.io.IOException
-        {
-           do
-           {
-               int respuesta, ignorar;
-               
-               mostrarFicha();
-           }
-     
-            
-            do {
-                ignorar = System.in.read();    
-            } while (ignorar != '\n');
-            
-        }
+    public Ficha tirarFicha() throws java.io.IOException {
+
+        Scanner lector = new Scanner(System.in);
+        
+        int respuesta;
+        
+            System.out.println("Selecciona la ficha que quieres tirar: ");
+            mostrarFicha();
+            respuesta = lector.nextInt();       
+        
+        Ficha ficha = this.fichasDeJugador.get(respuesta);
+        this.fichasDeJugador.remove(this.fichasDeJugador.get(respuesta));
+        return ficha;
+
+    }
         
         void mostrarFicha()
         {
             for (int i = 0; i < this.fichasDeJugador.size(); i++) {
-                System.out.println("[" + i + "] " + this.fichasDeJugador.get(i).getLadoIzquierdo() +  this.fichasDeJugador.get(i).getLadoDerecho());
+                System.out.println("[" + i + "] " + this.fichasDeJugador.get(i).getLadoIzquierdo() +  "|" + this.fichasDeJugador.get(i).getLadoDerecho());
                 
             }
             
