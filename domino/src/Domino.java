@@ -119,10 +119,32 @@ public class Domino {
         }
     }
  */   
-    public boolean  validarFicha()
+    public boolean  validarFicha(Ficha ficha, char car)
     {
-    //    if(inicio.ficha)
-        return true;
+        if (car == 'D') {
+            if ((this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoDerecho() == ficha.getLadoIzquierdo())
+                    || (this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoDerecho() == ficha.getLadoDerecho())
+                    || (this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoIzquierdo() == ficha.getLadoIzquierdo()
+                    || (this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoIzquierdo() == ficha.getLadoDerecho()))
+                    ) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } else if (car == 'I') {
+
+            if ((this.fichasTiradas.get(0).getLadoIzquierdo() == ficha.getLadoDerecho())
+                    || this.fichasTiradas.get(0).getLadoIzquierdo() == ficha.getLadoIzquierdo()
+                    || (this.fichasTiradas.get(0).getLadoDerecho() == ficha.getLadoIzquierdo())
+                    || (this.fichasTiradas.get(0).getLadoDerecho() == ficha.getLadoDerecho())) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+        return false;
     }
     
    /* public boolean estaVacia()
@@ -146,17 +168,17 @@ public class Domino {
         
         return posicion;
     }
-    
-    public void comenzarJuego()
-    {
+
+    public void comenzarJuego() {
         Scanner lector = new Scanner(System.in);
-        
+
         iniciarJuego();
         turno = buscarMulaDeSeis();
 
         char direccion;
 
         while (!hayGanador) {
+            System.out.println("Turno del jugador #" + (turno + 1));
 
             if (this.fichasTiradas.size() == 0) {
                 try {
@@ -169,41 +191,42 @@ public class Domino {
                 this.imprimirFichasEnJuego();
                 try {
                     Ficha fichaATirar = this.jugadores.get(turno).tirarFicha();
-                
-                    System.out.println("Tirar por la [D]erecha o [I]zquierda ");
-                    direccion = lector.next().charAt(0);
-                    
-                    if(direccion == 'D')
-                    {
-                        if((this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoDerecho() == fichaATirar.getLadoIzquierdo())
-                                || (this.fichasTiradas.get(this.fichasTiradas.size() - 1).getLadoDerecho() == fichaATirar.getLadoDerecho()))
-                        {
-                            fichasTiradas.add(fichaATirar);
+
+                    if (fichaATirar.isEsValida()) {
+                        System.out.println("Tirar por la [D]erecha o [I]zquierda ");
+                        direccion = lector.next().charAt(0);
+
+                        if (direccion == 'D') {
+                            if (validarFicha(fichaATirar, direccion)) {
+                                fichasTiradas.add(fichaATirar);
+                            } else {
+                                System.out.println("Movimiento no permitido");
+                                continue;
+                            }
+
+                        } else if (direccion == 'I') {
+
+                            if (validarFicha(fichaATirar, direccion)) {
+                                fichasTiradas.add(0, fichaATirar);
+                            } else {
+                                System.out.println("Movimiento no permitido");
+                                continue;
+                            }
+
                         }
-                        else
-                        {
-                            System.out.println("Movimiento no permitido");
-                        }
-                        
+                    } else {
+                        System.out.println("El jugador ha pasado su turno");
+                        continue;
+
                     }
-                    else if(direccion == 'I')
-                    {
-                        
-                        if(this.fichasTiradas.get(0).getLadoIzquierdo() == fichaATirar.getLadoDerecho())
-                        {
-                            fichasTiradas.add(0, fichaATirar);
-                        }
-                        else
-                        {
-                            System.out.println("Movimiento no permitido");
-                        }
-                    
-                    
-                        
-                    }
-                    
+
                 } catch (IOException ex) {
                     Logger.getLogger(Domino.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                if(this.jugadores.get(turno).fichasDeJugador.isEmpty())
+                {
+                    this.hayGanador = true;
                 }
                 turno++;
             }
@@ -217,11 +240,12 @@ public class Domino {
     
     public void imprimirFichasEnJuego()
     {
+        System.out.println("Fichas del juego: ");
         for(Ficha f : this.fichasTiradas)
         {
-            System.out.println("Fichas del juego: ");
             System.out.println(f.getLadoIzquierdo() + "|" + f.getLadoDerecho());
         }
+        
     }
     
     public Domino()

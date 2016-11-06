@@ -9,30 +9,43 @@
  * @author Néstor Alvarado Moreno
  */
 public class Ficha {
-    
+
     private int ladoIzquierdo;
-        private int ladoDerecho;
-        
-        public Ficha(int derecha, int izquierda)
-        {
-            this.ladoDerecho = derecha;
-            this.ladoIzquierdo = izquierda;
-        }
+    private int ladoDerecho;
+    private boolean esValida;
 
-        public int getLadoIzquierdo() {
-            return ladoIzquierdo;
-        }
+    public Ficha(int derecha, int izquierda) {
+        this.ladoDerecho = derecha;
+        this.ladoIzquierdo = izquierda;
+        this.esValida = true;
+    }
+    public Ficha()
+    {
+        this.esValida = false;
+    }
 
-        public void setLadoIzquierdo(int ladoIzquierdo) {
-            this.ladoIzquierdo = ladoIzquierdo;
-        }
+    public int getLadoIzquierdo() {
+        return ladoIzquierdo;
+    }
 
-        public int getLadoDerecho() {
-            return ladoDerecho;
-        }
+    public void setLadoIzquierdo(int ladoIzquierdo) {
+        this.ladoIzquierdo = ladoIzquierdo;
+    }
 
-        public void setLadoDerecho(int ladoDerecho) {
-            this.ladoDerecho = ladoDerecho;
-        }
-    
+    public int getLadoDerecho() {
+        return ladoDerecho;
+    }
+
+    public void setLadoDerecho(int ladoDerecho) {
+        this.ladoDerecho = ladoDerecho;
+    }
+
+    public boolean isEsValida() {
+        return esValida;
+    }
+
+    public void setEsValida(boolean esValida) {
+        this.esValida = esValida;
+    }
+
 }

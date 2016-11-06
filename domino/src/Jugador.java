@@ -15,36 +15,39 @@ import java.util.Scanner;
 public class Jugador {
     
     ArrayList<Ficha> fichasDeJugador;
-        
+
     public Ficha tirarFicha() throws java.io.IOException {
 
         Scanner lector = new Scanner(System.in);
-        
+
         int respuesta;
-        
-            System.out.println("Selecciona la ficha que quieres tirar: ");
-            mostrarFicha();
-            respuesta = lector.nextInt();       
-        
-        Ficha ficha = this.fichasDeJugador.get(respuesta);
-        this.fichasDeJugador.remove(this.fichasDeJugador.get(respuesta));
-        return ficha;
+
+        System.out.println("Selecciona la ficha que quieres tirar: ");
+        mostrarFicha();
+        System.out.println("[" + 9 + "] " + " Pasar");
+        respuesta = lector.nextInt();
+        Ficha ficha;
+        if (respuesta == 9) {
+            ficha = new Ficha();
+            return ficha;
+        } else {
+            ficha = this.fichasDeJugador.get(respuesta);
+            this.fichasDeJugador.remove(this.fichasDeJugador.get(respuesta));
+            return ficha;
+        }
 
     }
-        
-        void mostrarFicha()
-        {
-            for (int i = 0; i < this.fichasDeJugador.size(); i++) {
-                System.out.println("[" + i + "] " + this.fichasDeJugador.get(i).getLadoIzquierdo() +  "|" + this.fichasDeJugador.get(i).getLadoDerecho());
-                
-            }
-            
-            
+
+    public void mostrarFicha() {
+        for (int i = 0; i < this.fichasDeJugador.size(); i++) {
+            System.out.println("[" + i + "] " + this.fichasDeJugador.get(i).getLadoIzquierdo() + "|" + this.fichasDeJugador.get(i).getLadoDerecho());
+
         }
-        
-        public Jugador()
-        {
-            this.fichasDeJugador = new ArrayList();
-        }
-    
+
+    }
+
+    public Jugador() {
+        this.fichasDeJugador = new ArrayList();
+    }
+
 }
