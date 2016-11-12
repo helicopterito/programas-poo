@@ -19,6 +19,8 @@ public class Ventana extends javax.swing.JFrame {
     public Ventana() {
         initComponents();
         personas = new ArrayList();
+        totalPersonas = 0;
+        posicionActual = 0;
     }
 
     /**
@@ -78,8 +80,18 @@ public class Ventana extends javax.swing.JFrame {
         txtFieldCorreo.setText("Correo");
 
         btnAnterior.setText("Anterior");
+        btnAnterior.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAnteriorMouseClicked(evt);
+            }
+        });
 
         btnSiguiente.setText("Siguiente");
+        btnSiguiente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSiguienteMouseClicked(evt);
+            }
+        });
 
         btnReestablecer.setText("Reestablecer");
         btnReestablecer.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -178,12 +190,17 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarMouseClicked
         //Borra el contenido de los campos
     private void btnReestablecerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReestablecerMouseClicked
-        this.txtFieldNombre.setText("");
-        this.txtFieldAPaterno.setText("");
-        this.txtFieldAMaterno.setText("");
-        this.txtFieldDireccion.setText("");
-        this.txtFieldCorreo.setText("");
+        
+        reestablecer();
     }//GEN-LAST:event_btnReestablecerMouseClicked
+
+    private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
+        personaSiguiente();
+    }//GEN-LAST:event_btnSiguienteMouseClicked
+
+    private void btnAnteriorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnteriorMouseClicked
+        personaAnterior();
+    }//GEN-LAST:event_btnAnteriorMouseClicked
         // Crea una persona con los datos introducidos en los TextField
     public void crearPersona()
     {
@@ -194,7 +211,62 @@ public class Ventana extends javax.swing.JFrame {
         this.txtFieldAMaterno.getText(),
         this.txtFieldDireccion.getText(),
         this.txtFieldCorreo.getText());
-        this.personas.add(p1);
+        this.getPersonas().add(p1);
+        //aumenta el total de personas
+        totalPersonas++;
+    }
+    
+    public void reestablecer()
+    {
+        this.txtFieldNombre.setText("");
+        this.txtFieldAPaterno.setText("");
+        this.txtFieldAMaterno.setText("");
+        this.txtFieldDireccion.setText("");
+        this.txtFieldCorreo.setText("");
+    }
+    
+    public void personaSiguiente()
+    {
+        if(totalPersonas == 0)
+        {
+            reestablecer();
+        }
+        else if(totalPersonas == 1)
+        {
+            posicionActual = 0;
+        }
+        else if(totalPersonas > 1)
+        {
+            ++posicionActual;
+        }
+        
+        mostrarPersona(posicionActual);
+    }
+    
+    public void personaAnterior()
+    {
+        if(totalPersonas == 0 | posicionActual < 0)
+        {
+            reestablecer();
+        }
+        else if(totalPersonas == 1)
+        {
+            posicionActual = 0;
+        }
+        else if(totalPersonas > 1)
+        {
+            --posicionActual;
+        }
+        mostrarPersona(posicionActual);
+    }
+    
+    public void mostrarPersona(int posicion)
+    {
+        this.txtFieldNombre.setText(personas.get(posicion).getNombre());
+        this.txtFieldAPaterno.setText(personas.get(posicion).getaPaterno());
+        this.txtFieldAMaterno.setText(personas.get(posicion).getaMaterno());
+        this.txtFieldDireccion.setText(personas.get(posicion).getDireccion());
+        this.txtFieldCorreo.setText(personas.get(posicion).getCorreo());
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -214,5 +286,31 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JTextField txtFieldNombre;
     // End of variables declaration//GEN-END:variables
     private ArrayList<Persona> personas;
+    private int totalPersonas;
+    private int posicionActual;
+
+    public ArrayList<Persona> getPersonas() {
+        return personas;
+    }
+
+    public void setPersonas(ArrayList<Persona> personas) {
+        this.personas = personas;
+    }
+
+    public int getTotalPersonas() {
+        return totalPersonas;
+    }
+
+    public void setTotalPersonas(int totalPersonas) {
+        this.totalPersonas = totalPersonas;
+    }
+
+    public int getPosicionActual() {
+        return posicionActual;
+    }
+
+    public void setPosicionActual(int posicionActual) {
+        this.posicionActual = posicionActual;
+    }
 
 }
