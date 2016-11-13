@@ -227,20 +227,17 @@ public class Ventana extends javax.swing.JFrame {
     
     public void personaSiguiente()
     {
-        if(totalPersonas == 0)
+
+        if(totalPersonas == 1)
         {
-            reestablecer();
-        }
-        else if(totalPersonas == 1)
-        {
-            posicionActual = 0;
+            mostrarPersona(posicionActual);
         }
         else if(totalPersonas > 1)
         {
-            ++posicionActual;
+            mostrarPersona(++posicionActual);
         }
         
-        mostrarPersona(posicionActual);
+        
     }
     
     public void personaAnterior()
