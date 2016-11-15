@@ -214,8 +214,10 @@ public class Ventana extends javax.swing.JFrame {
         this.getPersonas().add(p1);
         //aumenta el total de personas
         totalPersonas++;
+        reestablecer();
     }
     
+    //Limpia el valor de los TextField
     public void reestablecer()
     {
         this.txtFieldNombre.setText("");
@@ -224,6 +226,7 @@ public class Ventana extends javax.swing.JFrame {
         this.txtFieldDireccion.setText("");
         this.txtFieldCorreo.setText("");
     }
+    //Muestra los datos de la persona en la posicion siguiente
     
     public void personaSiguiente()
     {
@@ -234,12 +237,19 @@ public class Ventana extends javax.swing.JFrame {
         }
         else if(totalPersonas > 1)
         {
-            mostrarPersona(++posicionActual);
+            posicionActual++;
+            
+            if(posicionActual == totalPersonas)
+            {
+                posicionActual = 0;//si esta en la ultima posicion hace que el siguiente sea el primero
+            }
+            mostrarPersona(posicionActual);
         }
         
         
     }
     
+    //Muestra los datos de la persona en la posicion anterior
     public void personaAnterior()
     {
         if(totalPersonas == 0 | posicionActual < 0)
@@ -253,10 +263,16 @@ public class Ventana extends javax.swing.JFrame {
         else if(totalPersonas > 1)
         {
             --posicionActual;
+            
+            if(posicionActual == -1)//si est[a en la primer posicion hace que el anterior sea el ultimo
+            {
+                posicionActual = (this.totalPersonas - 1);
+            }
         }
         mostrarPersona(posicionActual);
     }
     
+    //coloca el valor de los atributos de la Persona en los TextField
     public void mostrarPersona(int posicion)
     {
         this.txtFieldNombre.setText(personas.get(posicion).getNombre());
