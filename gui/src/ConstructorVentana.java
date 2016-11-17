@@ -1,3 +1,8 @@
+
+
+
+
+
 /*
  * Copyright (C) 2016 Néstor A. M. alvarado.nestor@yandex.com
  *
@@ -23,6 +28,8 @@ public class ConstructorVentana {
     
     public static void main(String[] args) {
         Ventana v1 = new Ventana();
+        
+        v1.setTitle("GUI Persona");
         v1.setVisible(true);
     }
     
