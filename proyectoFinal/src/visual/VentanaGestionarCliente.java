@@ -17,6 +17,7 @@
 package visual;
 
 import java.awt.Color;
+import model.*;
 import java.awt.Font;
 
 /**
@@ -114,7 +115,7 @@ public class VentanaGestionarCliente extends javax.swing.JFrame {
 
     private void jBtnMostrarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnMostrarClientesMouseClicked
         
-        if(VentanaPrincipal.listaDeClientes.size() > 0)
+        if(ListaClientes.LISTA_DE_CLIENTES.size() > 0)
         {
             VentanaMostrarCliente vMostrarCliente = new VentanaMostrarCliente();
         }

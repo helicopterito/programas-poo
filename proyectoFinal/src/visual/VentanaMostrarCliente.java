@@ -16,6 +16,7 @@
  */
 package visual;
 import control.*;
+import model.*;
 
 /**
  *
@@ -184,23 +185,23 @@ public class VentanaMostrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnCerrarMouseClicked
 
     private void jBtnAnteriorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnAnteriorMouseClicked
-        if(VentanaPrincipal.listaDeClientes.size() > 1 )
+        if(ListaClientes.LISTA_DE_CLIENTES.size() > 1 )
         {
             --posicion;
             if(posicion < 0)
             {
-                posicion = VentanaPrincipal.listaDeClientes.size() - 1;
+                posicion = ListaClientes.LISTA_DE_CLIENTES.size() - 1;
             }
         }
         mostrarCliente();
     }//GEN-LAST:event_jBtnAnteriorMouseClicked
 
     private void jBtnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSiguienteMouseClicked
-        if(VentanaPrincipal.listaDeClientes.size() > 1)
+        if(ListaClientes.LISTA_DE_CLIENTES.size() > 1)
         {
             ++posicion;
             
-            if(posicion == VentanaPrincipal.listaDeClientes.size())
+            if(posicion == ListaClientes.LISTA_DE_CLIENTES.size())
             {
                 posicion = 0;
             }
@@ -211,11 +212,11 @@ public class VentanaMostrarCliente extends javax.swing.JFrame {
 
     private void mostrarCliente()
     {
-        this.jTxtFieldNombre.setText(VentanaPrincipal.listaDeClientes.get(posicion).getNombre());
-        this.jTxtFieldAPaterno.setText(VentanaPrincipal.listaDeClientes.get(posicion).getaPaterno());
-        this.jTxtFieldAMaterno.setText(VentanaPrincipal.listaDeClientes.get(posicion).getaMaterno());
-        this.jTxtFieldDireccion.setText(VentanaPrincipal.listaDeClientes.get(posicion).getDireccion());
-        this.jTxtFieldNumeroDeCliente.setText(Integer.toString(VentanaPrincipal.listaDeClientes.get(posicion).getNumeroDeCliente()));
+        this.jTxtFieldNombre.setText(ListaClientes.LISTA_DE_CLIENTES.get(posicion).getNombre());
+        this.jTxtFieldAPaterno.setText(ListaClientes.LISTA_DE_CLIENTES.get(posicion).getaPaterno());
+        this.jTxtFieldAMaterno.setText(ListaClientes.LISTA_DE_CLIENTES.get(posicion).getaMaterno());
+        this.jTxtFieldDireccion.setText(ListaClientes.LISTA_DE_CLIENTES.get(posicion).getDireccion());
+        this.jTxtFieldNumeroDeCliente.setText(Integer.toString(ListaClientes.LISTA_DE_CLIENTES.get(posicion).getNumeroDeCliente()));
     }
 
 

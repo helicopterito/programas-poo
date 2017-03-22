@@ -18,6 +18,7 @@ package visual;
 
 import java.util.Date;
 import control.*;
+import model.*;
 import java.awt.Color;
 
 /**
@@ -273,12 +274,12 @@ public class VentanaNuevoAlquiler extends javax.swing.JFrame {
                         VentanaPrincipal.buscarCliente(Integer.parseInt(this.jTxtFieldNumeroCliente.getText())),
                         fechaInicial,
                         fechaFinal,
-                        (VentanaPrincipal.listaDeAlquileres.size() + 1)
+                        (ListaDeAlquiler.LISTA_DE_ALQUILERES.size() + 1)
                 );
                 
-                VentanaPrincipal.listaDeAlquileres.add(alquilerNuevo);
+                ListaDeAlquiler.LISTA_DE_ALQUILERES.add(alquilerNuevo);
                 VentanaPrincipal.buscarAutomovil(this.jTxtFieldPlaca.getText()).setDisponible(false);
-                VentanaExito vExito = new VentanaExito(VentanaPrincipal.listaDeAlquileres.size());
+                VentanaExito vExito = new VentanaExito(ListaDeAlquiler.LISTA_DE_ALQUILERES.size());
                 reestablecer();
 
             }

@@ -1,6 +1,7 @@
 package control;
 
 import visual.VentanaPrincipal;
+import model.*;
 
 /*
  * Copyright (C) 2016 Néstor A. M. alvarado.nestor@yandex.com
@@ -32,7 +33,7 @@ public class Cliente extends Persona{
     //constructor con todos los atributos inicializados
     public Cliente(String nombre, String aPaterno, String aMaterno, String direccion) {
         super(nombre, aPaterno, aMaterno, direccion);
-        this.numeroDeCliente = (VentanaPrincipal.listaDeClientes.size() + 1);
+        this.numeroDeCliente = (ListaClientes.LISTA_DE_CLIENTES.size() + 1);
     }
 
     public Cliente() {

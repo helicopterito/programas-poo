@@ -16,6 +16,7 @@
  */
 package visual;
 import control.*;
+import model.*;
 import java.awt.Color;
 
 /**
@@ -205,7 +206,7 @@ public class VentanaAgregarAutomovil extends javax.swing.JFrame {
                     this.jTxtFieldPlaca.getText(),
                     true);
 
-            VentanaPrincipal.listaDeAutomoviles.add(auto);
+            ListaAutomovil.LISTA_DE_AUTOMOVILES.add(auto);
             reestablecer();
         } else {
             this.jTxtFieldKilometraje.setText("Introduce un valor valido");

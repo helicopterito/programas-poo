@@ -16,6 +16,8 @@
  */
 package visual;
 
+import model.*;
+
 import java.awt.Color;
 
 /**
@@ -180,7 +182,7 @@ public class VentanaRecibirAutomovil extends javax.swing.JFrame {
             VentanaPrincipal.buscarAutomovil(this.jTxtFieldPlaca.getText()).setDisponible(true);
             VentanaPrincipal.buscarAutomovil(this.jTxtFieldPlaca.getText()).setKilometraje(
             Integer.parseInt(this.jTxtFieldKilometraje.getText()));
-            VentanaPrincipal.listaDeAlquileres.get(Integer.parseInt(this.jTxtFieldNumeroAlquiler.getText()) - 1).setEstado(false);
+            ListaDeAlquiler.LISTA_DE_ALQUILERES.get(Integer.parseInt(this.jTxtFieldNumeroAlquiler.getText()) - 1).setEstado(false);
             reestablecer();
             VentanaExito vExito = new VentanaExito();
         }

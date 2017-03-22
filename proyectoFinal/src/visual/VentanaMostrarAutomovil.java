@@ -16,6 +16,7 @@
  */
 package visual;
 
+import model.*;
 import java.awt.Color;
 
 /**
@@ -30,7 +31,7 @@ public class VentanaMostrarAutomovil extends javax.swing.JFrame {
     public VentanaMostrarAutomovil() {
         
         String aviso;
-        if(VentanaPrincipal.listaDeAutomoviles.size() > 0)
+        if(ListaAutomovil.LISTA_DE_AUTOMOVILES.size() > 0)
         {
             initComponents();
             this.setVisible(true);
@@ -200,22 +201,22 @@ public class VentanaMostrarAutomovil extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnCerrarMouseClicked
 
     private void jBtnAnteriorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnAnteriorMouseClicked
-        if(VentanaPrincipal.listaDeAutomoviles.size() > 1 )
+        if(ListaAutomovil.LISTA_DE_AUTOMOVILES.size() > 1 )
         {
             --posicion;
             if(posicion < 0)
             {
-                posicion = VentanaPrincipal.listaDeAutomoviles.size() - 1;
+                posicion = ListaAutomovil.LISTA_DE_AUTOMOVILES.size() - 1;
             }
         }
         mostrarAutomovil();
     }//GEN-LAST:event_jBtnAnteriorMouseClicked
 
     private void jBtnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSiguienteMouseClicked
-        if(VentanaPrincipal.listaDeAutomoviles.size() > 1)
+        if(ListaAutomovil.LISTA_DE_AUTOMOVILES.size() > 1)
         {
             ++posicion;
-            if (posicion == VentanaPrincipal.listaDeAutomoviles.size()) {
+            if (posicion == ListaAutomovil.LISTA_DE_AUTOMOVILES.size()) {
                 posicion = 0;
             }
         }
@@ -226,13 +227,13 @@ public class VentanaMostrarAutomovil extends javax.swing.JFrame {
     public void mostrarAutomovil()
     {
         
-        this.jTxtFieldMarca.setText(VentanaPrincipal.listaDeAutomoviles.get(posicion).getMarca());
-        this.jTxtFieldModelo.setText(VentanaPrincipal.listaDeAutomoviles.get(posicion).getModelo());
-        this.jTxtFieldEstadoActual.setText(VentanaPrincipal.listaDeAutomoviles.get(posicion).getEstadoActual());
-        this.jTxtFieldKilometraje.setText(String.valueOf(VentanaPrincipal.listaDeAutomoviles.get(posicion).getKilometraje()));
-        this.jTxtFieldPlaca.setText(VentanaPrincipal.listaDeAutomoviles.get(posicion).getPlaca());
+        this.jTxtFieldMarca.setText(ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicion).getMarca());
+        this.jTxtFieldModelo.setText(ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicion).getModelo());
+        this.jTxtFieldEstadoActual.setText(ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicion).getEstadoActual());
+        this.jTxtFieldKilometraje.setText(String.valueOf(ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicion).getKilometraje()));
+        this.jTxtFieldPlaca.setText(ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicion).getPlaca());
         
-        if(!VentanaPrincipal.listaDeAutomoviles.get(posicion).estaDisponible())
+        if(!ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicion).estaDisponible())
         {
             this.jTxtFieldMarca.setForeground(Color.red);
             this.jTxtFieldModelo.setForeground(Color.red);
@@ -246,11 +247,11 @@ public class VentanaMostrarAutomovil extends javax.swing.JFrame {
     
     public void mostrarAutomovil(int posicionAMostrar)
     {
-        this.jTxtFieldMarca.setText(VentanaPrincipal.listaDeAutomoviles.get(posicionAMostrar).getMarca());
-        this.jTxtFieldModelo.setText(VentanaPrincipal.listaDeAutomoviles.get(posicionAMostrar).getModelo());
-        this.jTxtFieldEstadoActual.setText(VentanaPrincipal.listaDeAutomoviles.get(posicionAMostrar).getEstadoActual());
-        this.jTxtFieldKilometraje.setText(String.valueOf(VentanaPrincipal.listaDeAutomoviles.get(posicionAMostrar).getKilometraje()));
-        this.jTxtFieldPlaca.setText(VentanaPrincipal.listaDeAutomoviles.get(posicionAMostrar).getPlaca());
+        this.jTxtFieldMarca.setText(ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicionAMostrar).getMarca());
+        this.jTxtFieldModelo.setText(ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicionAMostrar).getModelo());
+        this.jTxtFieldEstadoActual.setText(ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicionAMostrar).getEstadoActual());
+        this.jTxtFieldKilometraje.setText(String.valueOf(ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicionAMostrar).getKilometraje()));
+        this.jTxtFieldPlaca.setText(ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicionAMostrar).getPlaca());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,6 +1,7 @@
 package visual;
 
 import control.*;
+import model.*;
 
 public class VentanaAgregarCliente extends javax.swing.JFrame {
 
@@ -189,7 +190,7 @@ public class VentanaAgregarCliente extends javax.swing.JFrame {
         this.txtFieldAMaterno.getText(),
         this.txtFieldDireccion.getText());
         
-        VentanaPrincipal.listaDeClientes.add(clienteNuevo);
+        ListaClientes.LISTA_DE_CLIENTES.add(clienteNuevo);
         
         
         reestablecer();

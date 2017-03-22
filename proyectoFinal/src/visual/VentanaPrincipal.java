@@ -1,6 +1,7 @@
 package visual;
 
 import control.*;
+import model.*;
 import java.util.ArrayList;
 
 /*
@@ -143,7 +144,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static Cliente buscarCliente(int numeroDeCliente)
     {
         try {
-            return listaDeClientes.get((numeroDeCliente -1));
+            return ListaClientes.LISTA_DE_CLIENTES.get((numeroDeCliente -1));
         } catch (Exception e) {
             return null;
         }
@@ -153,7 +154,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static Alquiler buscarAlquiler(int numeroAlquiler)
     {
         try {
-            return listaDeAlquileres.get(numeroAlquiler);
+            return ListaDeAlquiler.LISTA_DE_ALQUILERES.get(numeroAlquiler);
         } catch (Exception e) {
             return null;
         }
@@ -163,9 +164,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     {
         int posicion = -1;
         
-        for(int i = 0; i < listaDeAutomoviles.size(); i++)
+        for(int i = 0; i < ListaAutomovil.LISTA_DE_AUTOMOVILES.size(); i++)
         {
-            if(listaDeAutomoviles.get(i).getPlaca().equalsIgnoreCase(placa))
+            if(ListaAutomovil.LISTA_DE_AUTOMOVILES.get(i).getPlaca().equalsIgnoreCase(placa))
             {
                 posicion = i;
             }
@@ -173,7 +174,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         if(posicion != -1)
         {
-            return listaDeAutomoviles.get(posicion);
+            return ListaAutomovil.LISTA_DE_AUTOMOVILES.get(posicion);
         }
         else
         {
@@ -225,7 +226,5 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLblTitulo;
     // End of variables declaration//GEN-END:variables
 
-    public static ArrayList<Cliente> listaDeClientes = new ArrayList();
-    public static ArrayList<Automovil> listaDeAutomoviles = new ArrayList();
-    public static ArrayList<Alquiler> listaDeAlquileres = new ArrayList();
+    
 }
